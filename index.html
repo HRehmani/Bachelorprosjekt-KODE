@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thon Hotel Slottsparken – Prototype</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="booking-bar">
+    <div class="container">
+        <h1>Thon Hotel Slottsparken</h1>
+        <div class="quick-book">
+            <div class="field"><label>Innsjekk</label><input type="date" id="checkin" required></div>
+            <div class="field"><label>Utsjekk</label><input type="date" id="checkout" required></div>
+            <div class="field"><label>Gjester</label><select id="guests"><option value="1">1 gjest</option><option value="2" selected>2 gjester</option><option value="3">3 gjester</option><option value="4">4 gjester</option></select></div>
+            <button onclick="document.getElementById('room-section').scrollIntoView({behavior:'smooth'})" class="search-btn">Sjekk tilgjengelighet</button>
+            <div class="virtual-dropdown">
+                <button class="virtual-btn">Virtual Tours ▾</button>
+                <div class="virtual-menu">
+                    <a href="#" onclick="openTour('https://kuula.co/share/collection/7DRM5?logo=0&info=0&fs=1&vr=1&sd=1')">Grotten – Vinsmaking</a>
+                    <a href="#" onclick="openTour('https://kuula.co/share/collection/7DRM0?logo=0&info=0&fs=1&vr=1&sd=1')">Stella – Konferanserom</a>
+                    <a href="#" onclick="openTour('https://kuula.co/share/collection/7Dsy9?logo=0&info=0&fs=1&vr=1&sd=1')">Kringla – Konferanserom</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+        <h2>Sentrumsnært ved Slottsparken</h2>
+        <p>Bygg din egen opplevelse</p>
+    </div>
+</section>
+
+<section id="room-section" class="package-builder container">
+    <h2>Bygg din opplevelse</h2>
+    
+    <!-- ====================== MODERNE HANDLEKURV (venstre + sticky) ====================== -->
+    <aside id="modern-cart" class="modern-cart">
+        <div class="cart-header">
+            <h3>Din opplevelse</h3>
+            <span id="cart-room-count" class="cart-count">0</span>
+        </div>
+        <div id="cart-items" class="cart-items"></div>
+        <div class="cart-total">
+            <div class="total-line">
+                <span>Totalpris</span>
+                <strong id="cart-total-price">0 kr</strong>
+            </div>
+            <small id="cart-nights-info">per natt • velg dato for eksakt pris</small>
+        </div>
+        <button id="cart-book-btn" class="cart-book-btn" disabled>Fullfør booking</button>
+    </aside>
+    <!-- ====================== SLUTT HANDLEKURV ====================== -->
+
+    <div class="main-content">
+        <div class="step">
+            <h3>1. Velg romtype</h3>
+            <div class="options rooms-grid">
+
+                <!-- Standard Double -->
+                <div class="card room-card" data-price="1145" data-room-index="0">
+                    <div class="slider-container">
+                        <button class="slider-btn prev" onclick="prevImage(this)">‹</button>
+                        <img src="bilder/Thon_Hotel_Slottsparken_Standard_Rom%201.webp" class="room-image" alt="">
+                        <button class="slider-btn next" onclick="nextImage(this)">›</button>
+                    </div>
+                    <h4>Standard Double</h4>
+                    <p>2 personer • 20 m²</p>
+                    <strong>1 145 kr/natt</strong>
+                    <button onclick="selectRoom(this)" class="select-btn">Velg</button>
+                    <button onclick="showRoomDetails(0)" class="details-btn">Se detaljer</button>
+                </div>
+
+                <!-- Standard Single -->
+                <div class="card room-card" data-price="995" data-room-index="1">
+                    <div class="slider-container">
+                        <button class="slider-btn prev" onclick="prevImage(this)">‹</button>
+                        <img src="bilder/Thon_Hotel_Slottsparken_Standard_Room_Single%201.webp" class="room-image" alt="">
+                        <button class="slider-btn next" onclick="nextImage(this)">›</button>
+                    </div>
+                    <h4>Standard Single</h4>
+                    <p>1 person • 18 m²</p>
+                    <strong>995 kr/natt</strong>
+                    <button onclick="selectRoom(this)" class="select-btn">Velg</button>
+                    <button onclick="showRoomDetails(1)" class="details-btn">Se detaljer</button>
+                </div>
+
+                <!-- Superior -->
+                <div class="card room-card" data-price="1345" data-room-index="2">
+                    <div class="slider-container">
+                        <button class="slider-btn prev" onclick="prevImage(this)">‹</button>
+                        <img src="bilder/Thon_Hotel_Slottsparken_Superior_Room%201.webp" class="room-image" alt="">
+                        <button class="slider-btn next" onclick="nextImage(this)">›</button>
+                    </div>
+                    <h4>Superior</h4>
+                    <p>2 personer • 20 m²</p>
+                    <strong>1 345 kr/natt</strong>
+                    <button onclick="selectRoom(this)" class="select-btn">Velg</button>
+                    <button onclick="showRoomDetails(2)" class="details-btn">Se detaljer</button>
+                </div>
+
+                <!-- Superior Twin -->
+                <div class="card room-card" data-price="1395" data-room-index="3">
+                    <div class="slider-container">
+                        <button class="slider-btn prev" onclick="prevImage(this)">‹</button>
+                        <img src="bilder/Thon_Hotel_Slottsparken_Superior_Rom_twin%201.webp" class="room-image" alt="">
+                        <button class="slider-btn next" onclick="nextImage(this)">›</button>
+                    </div>
+                    <h4>Superior Twin</h4>
+                    <p>2 personer • 20 m²</p>
+                    <strong>1 395 kr/natt</strong>
+                    <button onclick="selectRoom(this)" class="select-btn">Velg</button>
+                    <button onclick="showRoomDetails(3)" class="details-btn">Se detaljer</button>
+                </div>
+
+                <!-- Business -->
+                <div class="card room-card" data-price="1890" data-room-index="4">
+                    <div class="slider-container">
+                        <button class="slider-btn prev" onclick="prevImage(this)">‹</button>
+                        <img src="bilder/Thon_Hotel_Slottsparken_Business_Room%201.webp" class="room-image" alt="">
+                        <button class="slider-btn next" onclick="nextImage(this)">›</button>
+                    </div>
+                    <h4>Business</h4>
+                    <p>Opptil 4 personer • 30 m²</p>
+                    <strong>1 890 kr/natt</strong>
+                    <button onclick="selectRoom(this)" class="select-btn">Velg</button>
+                    <button onclick="showRoomDetails(4)" class="details-btn">Se detaljer</button>
+                </div>
+
+                <!-- Suite -->
+                <div class="card room-card" data-price="3490" data-room-index="5">
+                    <div class="slider-container">
+                        <button class="slider-btn prev" onclick="prevImage(this)">‹</button>
+                        <img src="bilder/Thon_Hotel_Slottsparken_Suite%201.webp" class="room-image" alt="">
+                        <button class="slider-btn next" onclick="nextImage(this)">›</button>
+                    </div>
+                    <h4>Suite</h4>
+                    <p>2–4 personer • 66 m²</p>
+                    <strong>3 490 kr/natt</strong>
+                    <button onclick="selectRoom(this)" class="select-btn">Velg</button>
+                    <button onclick="showRoomDetails(5)" class="details-btn">Se detaljer</button>
+                </div>
+
+                <!-- Junior Suite -->
+                <div class="card room-card" data-price="2890" data-room-index="6">
+                    <div class="slider-container">
+                        <button class="slider-btn prev" onclick="prevImage(this)">‹</button>
+                        <img src="bilder/thon-hotel-slottsparken-juniorsuite-1%201.webp" class="room-image" alt="">
+                        <button class="slider-btn next" onclick="nextImage(this)">›</button>
+                    </div>
+                    <h4>Junior Suite</h4>
+                    <p>2–4 personer • 40 m²</p>
+                    <strong>2 890 kr/natt</strong>
+                    <button onclick="selectRoom(this)" class="select-btn">Velg</button>
+                    <button onclick="showRoomDetails(6)" class="details-btn">Se detaljer</button>
+                </div>
+
+                <!-- 2-roms Leilighet -->
+                <div class="card room-card" data-price="2545" data-room-index="7">
+                    <div class="slider-container">
+                        <button class="slider-btn prev" onclick="prevImage(this)">‹</button>
+                        <img src="bilder/thon-hotel-slottsparken-leilighet-64%201.webp" class="room-image" alt="">
+                        <button class="slider-btn next" onclick="nextImage(this)">›</button>
+                    </div>
+                    <h4>2-roms Leilighet</h4>
+                    <p>2–4 personer • 30–66 m²</p>
+                    <strong>2 545 kr/natt</strong>
+                    <button onclick="selectRoom(this)" class="select-btn">Velg</button>
+                    <button onclick="showRoomDetails(7)" class="details-btn">Se detaljer</button>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="step" id="extras-section" style="display:none; margin-top:80px;">
+            <h3>2. Legg til opplevelser</h3>
+            <div class="options extras-grid">
+                <label class="extra-card"><input type="checkbox" data-price="590" data-name="Vinsmaking i Grotten" onchange="updateTotal()"><div class="extra-info"><span>Vinsmaking i Grotten</span><strong>+ 590 kr</strong></div></label>
+                <label class="extra-card"><input type="checkbox" data-price="790" data-name="Spa-inngang" onchange="updateTotal()"><div class="extra-info"><span>Spa-inngang</span><strong>+ 790 kr</strong></div></label>
+                <label class="extra-card"><input type="checkbox" data-price="490" data-name="Oslo Tour" onchange="updateTotal()"><div class="extra-info"><span>Oslo Tour</span><strong>+ 490 kr</strong></div></label>
+                <label class="extra-card"><input type="checkbox" data-price="890" data-name="Middagspakke" onchange="updateTotal()"><div class="extra-info"><span>Middagspakke</span><strong>+ 890 kr</strong></div></label>
+            </div>
+        </div>
+
+        <div class="summary">
+            <div class="summary-details">
+                <p><strong>Totalpris:</strong> <span id="total-price">0 kr</span></p>
+                <small id="package-info">Velg rom for å starte pakken</small>
+                <div id="selected-items" style="margin-top:20px; font-size:1.1rem;"></div>
+            </div>
+            <button id="book-btn" disabled onclick="alert('Går til betaling... (demo)')">Fullfør booking</button>
+        </div>
+    </div>
+</section>
+
+<div id="roomModal" class="room-modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeRoomModal()">✕</span>
+        <div id="modalContent"></div>
+    </div>
+</div>
+
+<div id="tourModal" class="tour-modal">
+    <span class="close-tour" onclick="closeTour()">✕</span>
+    <iframe id="tourFrame" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<!-- ====================== NY MODERNE BILDE LIGHTBOX ====================== -->
+<div id="lightbox" class="lightbox">
+    <div class="lightbox-content">
+        <span class="lightbox-close" onclick="closeLightbox()">✕</span>
+        <button class="lightbox-nav lightbox-prev" onclick="prevLightboxImage()">‹</button>
+        <img id="lightbox-image" src="" alt="">
+        <button class="lightbox-nav lightbox-next" onclick="nextLightboxImage()">›</button>
+        <div id="lightbox-counter" class="lightbox-counter"></div>
+    </div>
+</div>
+<!-- ====================== SLUTT LIGHTBOX ====================== -->
+
+<script src="javascript.js"></script>
+</body>
+</html>

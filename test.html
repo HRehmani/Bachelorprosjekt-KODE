@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thon Hotel Slottsparken – Prototype</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Inter',sans-serif; background:#f8f9fa; line-height:1.6; }
+    .container { max-width:1400px; margin:0 auto; padding:0 40px; }
+
+    .booking-bar {
+      position:absolute; top:0; left:0; right:0; z-index:100;
+      background:rgba(0,31,63,0.45); backdrop-filter:blur(16px);
+      padding:20px 0;
+    }
+    .quick-book {
+      display:flex; gap:24px; background:rgba(255,255,255,0.12); padding:16px 24px; border-radius:50px;
+    }
+    .field { display:flex; flex-direction:column; gap:6px; }
+    .field label { font-size:0.85rem; color:rgba(255,255,255,0.9); }
+    .quick-book input, .quick-book select {
+      background:transparent; border:none; color:white; font-size:1.25rem; padding:10px 16px; border-radius:12px; min-width:160px;
+    }
+
+    .search-btn {
+      background:#CF1330; color:white; padding:16px 40px; border-radius:50px; font-size:1.15rem;
+      font-weight:600; cursor:pointer; border:none;
+    }
+
+    .hero { height:100vh; background:url('https://via.placeholder.com/1920x1080?text=Slottsparken+Hero+Modern') center/cover; position:relative; display:flex; align-items:center; }
+    .hero-overlay { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,31,63,0.6)); }
+    .hero-content { position:relative; z-index:2; color:white; text-align:center; width:100%; }
+    .hero-content h2 { font-size:4.8rem; font-weight:800; }
+
+    .package-builder { padding:120px 0; background:#f8f9fa; }
+    .package-builder h2 { text-align:center; font-size:3rem; color:#001F3F; margin-bottom:60px; }
+    .step h3 { font-size:2.2rem; color:#001F3F; margin-bottom:40px; }
+
+    .options { display:grid; gap:40px; }
+    .rooms-grid { grid-template-columns:repeat(2,1fr); }
+
+    .card {
+      background:white; border-radius:16px; overflow:hidden; box-shadow:0 8px 32px rgba(0,31,63,0.15);
+      text-align:center; padding:20px; transition:all 0.4s ease;
+    }
+    .card:hover { transform:translateY(-10px); }
+    .card.selected {
+      transform:scale(1.06);
+      box-shadow:0 0 0 6px #CF1330, 0 15px 40px rgba(207,19,48,0.3);
+      border:3px solid #CF1330;
+    }
+    .card img { width:100%; height:280px; object-fit:cover; border-radius:12px; }
+    .select-btn {
+      margin-top:15px; padding:14px 36px; background:#001F3F; color:white; border:none; border-radius:8px; cursor:pointer; width:100%;
+      font-weight:600;
+    }
+    .card.selected .select-btn {
+      background:#28a745; content:"Valgt ✓";
+    }
+
+    .extras-grid { grid-template-columns:repeat(2,1fr); }
+    .extra-card {
+      background:white; border-radius:16px; padding:28px; box-shadow:0 8px 32px rgba(0,31,63,0.15);
+      display:flex; align-items:center; cursor:pointer;
+    }
+    .extra-card input { transform:scale(1.6); margin-right:25px; }
+    .extra-info span { font-size:1.35rem; font-weight:500; }
+    .extra-info strong { color:#CF1330; font-size:1.4rem; margin-top:8px; }
+
+    .summary {
+      margin-top:80px; background:#001F3F; color:white; padding:50px; border-radius:20px; display:flex;
+      justify-content:space-between; align-items:center; gap:30px;
+    }
+    #total-price { font-size:3.5rem; font-weight:700; }
+    #book-btn {
+      padding:20px 60px; font-size:1.5rem; background:#CF1330; border:none; border-radius:12px; color:white; cursor:pointer;
+    }
+    #book-btn:disabled { background:#666; }
+  </style>
+</head>
+<body>
+
+<header class="booking-bar">
+  <div class="container">
+    <h1>Thon Hotel Slottsparken</h1>
+    <div class="quick-book">
+      <div class="field"><label>Innsjekk</label><input type="date" id="checkin" required/></div>
+      <div class="field"><label>Utsjekk</label><input type="date" id="checkout" required/></div>
+      <div class="field"><label>Gjester</label>
+        <select id="guests">
+          <option value="1">1 gjest</option>
+          <option value="2" selected>2 gjester</option>
+          <option value="3">3 gjester</option>
+          <option value="4">4 gjester</option>
+        </select>
+      </div>
+      <button onclick="document.getElementById('room-section').scrollIntoView({behavior:'smooth'})" class="search-btn">Sjekk tilgjengelighet</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <h2>Sentrumsnært ved Slottsparken</h2>
+    <p>Bygg din egen opplevelse</p>
+  </div>
+</section>
+
+<section id="room-section" class="package-builder container">
+  <h2>Bygg din opplevelse</h2>
+
+  <div class="step">
+    <h3>1. Velg romtype</h3>
+    <div class="options rooms-grid">
+      <div class="card room-card" data-price="1145">
+        <img src="https://via.placeholder.com/600x400?text=Standard+Double" alt=""/>
+        <h4>Standard Double</h4>
+        <p>2 personer • 20 m²</p>
+        <strong>1 145 kr/natt</strong>
+        <button onclick="selectRoom(this)" class="select-btn">Velg</button>
+      </div>
+      <div class="card room-card" data-price="1345">
+        <img src="https://via.placeholder.com/600x400?text=Superior" alt=""/>
+        <h4>Superior</h4>
+        <p>2–3 personer • 25 m²</p>
+        <strong>1 345 kr/natt</strong>
+        <button onclick="selectRoom(this)" class="select-btn">Velg</button>
+      </div>
+      <div class="card room-card" data-price="1890">
+        <img src="https://via.placeholder.com/600x400?text=Business" alt=""/>
+        <h4>Business</h4>
+        <p>Opptil 4 personer • 30 m²</p>
+        <strong>1 890 kr/natt</strong>
+        <button onclick="selectRoom(this)" class="select-btn">Velg</button>
+      </div>
+      <div class="card room-card" data-price="2545">
+        <img src="https://via.placeholder.com/600x400?text=2-roms+Leilighet" alt=""/>
+        <h4>2-roms Leilighet</h4>
+        <p>2–4 personer • 30–66 m²</p>
+        <strong>2 545 kr/natt</strong>
+        <button onclick="selectRoom(this)" class="select-btn">Velg</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="step" id="extras-section" style="display:none; margin-top:80px;">
+    <h3>2. Legg til opplevelser</h3>
+    <div class="options extras-grid">
+      <label class="extra-card">
+        <input type="checkbox" data-price="590" data-name="Vinsmaking i Grotten" onchange="updateTotal()">
+        <div class="extra-info"><span>Vinsmaking i Grotten</span><strong>+ 590 kr</strong></div>
+      </label>
+      <label class="extra-card">
+        <input type="checkbox" data-price="790" data-name="Spa-inngang" onchange="updateTotal()">
+        <div class="extra-info"><span>Spa-inngang</span><strong>+ 790 kr</strong></div>
+      </label>
+      <label class="extra-card">
+        <input type="checkbox" data-price="490" data-name="Oslo Tour" onchange="updateTotal()">
+        <div class="extra-info"><span>Oslo Tour</span><strong>+ 490 kr</strong></div>
+      </label>
+      <label class="extra-card">
+        <input type="checkbox" data-price="890" data-name="Middagspakke" onchange="updateTotal()">
+        <div class="extra-info"><span>Middagspakke</span><strong>+ 890 kr</strong></div>
+      </label>
+    </div>
+  </div>
+
+  <div class="summary">
+    <div class="summary-details">
+      <p><strong>Totalpris:</strong> <span id="total-price">0 kr</span></p>
+      <small id="package-info">Velg rom for å starte pakken</small>
+      <div id="selected-items" style="margin-top:20px; font-size:1.1rem;"></div>
+    </div>
+    <button id="book-btn" disabled onclick="alert('Går til betaling... (demo)')">Fullfør booking</button>
+  </div>
+</section>
+
+<script>
+  let selectedRoomPrice = 0;
+  let selectedRoomName = '';
+
+  function selectRoom(btn) {
+    document.querySelectorAll('.room-card').forEach(c => c.classList.remove('selected'));
+    btn.parentElement.classList.add('selected');
+    selectedRoomPrice = parseInt(btn.parentElement.dataset.price);
+    selectedRoomName = btn.parentElement.querySelector('h4').textContent;
+
+    document.getElementById('extras-section').style.display = 'block';
+    updateTotal();
+  }
+
+  function updateTotal() {
+    let extrasTotal = 0;
+    const selectedExtras = [];
+    document.querySelectorAll('#extras-section input:checked').forEach(cb => {
+      extrasTotal += parseInt(cb.dataset.price);
+      selectedExtras.push(cb.dataset.name);
+    });
+
+    const grandTotal = selectedRoomPrice + extrasTotal;
+    document.getElementById('total-price').textContent = grandTotal.toLocaleString('no-NO') + ' kr';
+
+    if (selectedRoomPrice > 0) {
+      document.getElementById('package-info').textContent = selectedRoomName;
+      document.getElementById('book-btn').disabled = false;
+
+      let html = '<strong>Valgt pakke:</strong><ul>';
+      selectedExtras.forEach(item => html += `<li>${item}</li>`);
+      html += '</ul>';
+      document.getElementById('selected-items').innerHTML = html;
+    }
+  }
+</script>
+</body>
+</html>
