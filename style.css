@@ -211,27 +211,10 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
 }.main-content {flex: 1; min-width: 0;}/* Romkort – 2 kolonner med plass til 4 rom vertikalt per kolonne */
 .rooms-grid {
     display: grid;
-    grid-template-columns: repeat(4, minmax(340px, 1fr));   /* 4 kolonner på store skjermer */
-    grid-auto-rows: minmax(430px, auto);     /* høyde justert så alt passer uten sidescroll */
+    grid-template-columns: repeat(2, 1fr);   /* 2 kolonner */
+    grid-auto-rows: minmax(380px, auto);     /* høyde per rad – justert for 4 rom vertikalt */
     gap: 32px;
-}
-
-/* ====================== RESPONSIVITET – KUN DETTE ER LAGT TIL ====================== */
-@media (max-width: 1650px) {
-    .rooms-grid { grid-template-columns: repeat(3, minmax(320px, 1fr)); }
-}
-@media (max-width: 1250px) {
-    .rooms-grid { grid-template-columns: repeat(2, minmax(300px, 1fr)); gap: 24px; }
-}
-@media (max-width: 1100px) {
-    .modern-cart {display:none !important;}
-    .package-builder.container {flex-direction:column;}
-    .rooms-grid {grid-template-columns: repeat(2, minmax(300px, 1fr));}
-    .summary {max-width: 100%; margin-left:0; margin-right:0;}
-    .container {padding:0 20px;}
-}
-
-.card {background:var(--card-bg);border-radius:24px;overflow:hidden;box-shadow:var(--shadow);text-align:center;padding:26px;transition:all 0.3s ease;}
+}.card {background:var(--card-bg);border-radius:24px;overflow:hidden;box-shadow:var(--shadow);text-align:center;padding:26px;transition:all 0.3s ease;}
 .room-image {width:100%;height:275px;object-fit:cover;border-radius:16px;}
 .slider-container {position:relative;margin-bottom:24px;}
 .slider-btn {position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.5);color:white;border:none;width:44px;height:44px;font-size:28px;cursor:pointer;border-radius:50%;display:flex;align-items:center;justify-content:center;}
@@ -311,3 +294,30 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
 .lightbox-next {right: -30px;}
 .lightbox-close {position: absolute;top: -50px;right: 0;font-size: 42px;color: white;cursor: pointer;z-index: 10;text-shadow: 0 2px 10px rgba(0,0,0,0.5);}
 .lightbox-counter {position: absolute;bottom: -45px;left: 50%;transform: translateX(-50%);color: white;font-size: 1.1rem;background: rgba(0,0,0,0.5);padding: 6px 18px;border-radius: 30px;backdrop-filter: blur(10px);}
+
+/* ====================== RESPONSIVITET – KUN DETTE ER LAGT TIL ====================== */
+@media (max-width: 1400px) {
+    .quick-book {
+        gap: 16px;
+        padding: 18px 28px;
+    }
+    .field {
+        min-width: 150px;
+    }
+    .search-btn {
+        padding: 0 32px;
+    }
+}
+@media (max-width: 1100px) {
+    .quick-book {
+        gap: 12px;
+        padding: 16px 20px;
+        flex-wrap: wrap;
+    }
+    .field {
+        min-width: 140px;
+    }
+    .container {
+        padding: 0 20px;
+    }
+}
