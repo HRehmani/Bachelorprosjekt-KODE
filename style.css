@@ -274,13 +274,12 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
 
 .main-content {flex: 1; min-width: 0;}
 
-/* Romkort (uendret) */
+/* Romkort – nå med 2 kolonner og plass til 4 rom per kolonne */
 .rooms-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);   /* 2 kolonner */
-    grid-auto-rows: minmax(400px, auto);     /* sikrer at hvert kort tar plass til 4 i høyden */
+    grid-auto-rows: minmax(400px, auto);     /* sikrer høyde for 4 rom vertikalt per kolonne */
     gap: 32px;
-}
 }
 
 .card {background:var(--card-bg);border-radius:24px;overflow:hidden;box-shadow:var(--shadow);text-align:center;padding:26px;transition:all 0.3s ease;}
@@ -317,7 +316,7 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
 #total-price {font-size:3.5rem;font-weight:700;}
 #book-btn {padding:20px 60px;font-size:1.5rem;background:var(--thon-red);border:none;border-radius:16px;color:white;cursor:pointer;}
 
-/* Modals og cart (uendret) */
+/* Modals og cart (uendret bortsett fra sticky-fix) */
 .room-modal {position:fixed;inset:0;background:rgba(0,0,0,0.85);display:none;z-index:9999;align-items:center;justify-content:center;}
 .modal-content {background:white;max-width:720px;width:90%;border-radius:24px;padding:40px;position:relative;max-height:90vh;overflow-y:auto;}
 .close-modal {position:absolute;top:20px;right:30px;font-size:32px;cursor:pointer;color:#666;}
@@ -329,6 +328,7 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
 .modern-cart {
     position: sticky;
     top: 160px;
+    align-self: flex-start;  /* holder boksen øverst i kolonnen mens du scroller */
     background: white;
     border-radius: 24px;
     box-shadow: var(--shadow);
@@ -391,31 +391,9 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
     padding-right: clamp(20px, 5vw, 40px);
 }
 
-/* Rom-grid – bruk auto-fit for å unngå scroll/tom plass */
-.rooms-grid {
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: clamp(20px, 3vw, 32px);
-}
-
 /* Kart- og romkort-høyde tilpasser seg */
 .room-image {
     height: clamp(220px, 35vw, 275px);
-}
-
-/* Sticky cart – bredde og posisjon tilpasser seg */
-.modern-cart {
-    position: sticky;
-    top: 160px;                  /* starter 160px fra toppen – juster hvis du vil høyere/lavere */
-    align-self: flex-start;      /* holder den øverst i flex-containeren */
-    background: white;
-    border-radius: 24px;
-    box-shadow: var(--shadow);
-    padding: 28px 24px;
-    width: 300px;
-    height: fit-content;
-    flex-shrink: 0;
-    z-index: 10;
-}
 }
 
 /* Summary – bredde og padding tilpasser seg */
