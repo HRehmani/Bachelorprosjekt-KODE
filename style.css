@@ -274,7 +274,7 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
 
 .main-content {flex: 1; min-width: 0;}
 
-/* Romkort (uendret fra original) */
+/* Romkort (fullstendig original) */
 .rooms-grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(365px, 1fr));
@@ -315,7 +315,7 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
 #total-price {font-size:3.5rem;font-weight:700;}
 #book-btn {padding:20px 60px;font-size:1.5rem;background:var(--thon-red);border:none;border-radius:16px;color:white;cursor:pointer;}
 
-/* Modals og cart (uendret bortsett fra cart-layout) */
+/* Modals (uendret) */
 .room-modal {position:fixed;inset:0;background:rgba(0,0,0,0.85);display:none;z-index:9999;align-items:center;justify-content:center;}
 .modal-content {background:white;max-width:720px;width:90%;border-radius:24px;padding:40px;position:relative;max-height:90vh;overflow-y:auto;}
 .close-modal {position:absolute;top:20px;right:30px;font-size:32px;cursor:pointer;color:#666;}
@@ -324,6 +324,7 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
 .tour-modal iframe {width:100%;height:100%;}
 .close-tour {position:absolute;top:30px;right:40px;color:white;font-size:2.5rem;cursor:pointer;z-index:10000;}
 
+/* ====================== KUN CART – FIXET LAYOUT ====================== */
 .modern-cart {
     position: sticky;
     top: 160px;
@@ -337,22 +338,47 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
     z-index: 10;
 }
 
-.cart-header {display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid #eee;}
-.cart-header h3 {font-size:1.35rem;font-weight:600;color:var(--marine-blue);margin:0;}
-.cart-count {background:var(--thon-red);color:white;font-size:0.85rem;font-weight:600;padding:4px 10px;border-radius:20px;}
-.cart-items {margin-bottom:28px;min-height:80px;}
+.cart-header {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:24px;
+    padding-bottom:16px;
+    border-bottom:1px solid #eee;
+}
 
-/* === Kun endret del – bedre layout inni cart === */
+.cart-header h3 {
+    font-size:1.35rem;
+    font-weight:600;
+    color:var(--marine-blue);
+    margin:0;
+}
+
+.cart-count {
+    background:var(--thon-red);
+    color:white;
+    font-size:0.85rem;
+    font-weight:600;
+    padding:4px 10px;
+    border-radius:20px;
+}
+
+.cart-items {
+    margin-bottom:28px;
+    min-height:80px;
+}
+
 .cart-item {
-    display: grid;
-    grid-template-columns: 1fr auto auto;
-    align-items: start;
-    gap: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
     padding: 12px 0;
     border-bottom: 1px solid #f1f1f1;
 }
 
-.cart-item:last-child {border-bottom:none;}
+.cart-item:last-child {
+    border-bottom: none;
+}
 
 .cart-item-name {
     font-weight: 600;
@@ -373,6 +399,7 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
     font-size: 1.15rem;
     text-align: right;
     white-space: nowrap;
+    min-width: 120px;
 }
 
 .cart-item-remove {
@@ -383,15 +410,57 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
     cursor: pointer;
     padding: 0 8px;
     line-height: 1;
+    margin-left: 12px;
 }
 
-.cart-item-remove:hover {color: var(--thon-red);}
+.cart-item-remove:hover {
+    color: var(--thon-red);
+}
 
-.cart-total {padding-top:20px;border-top:2px solid #eee;margin-bottom:24px;}
-.total-line {display:flex;justify-content:space-between;font-size:1.4rem;font-weight:700;color:var(--marine-blue);}
-.cart-book-btn {width:100%;background:var(--thon-red);color:white;border:none;padding:18px;font-size:1.2rem;font-weight:600;border-radius:16px;cursor:pointer;transition:all 0.2s;}
-.cart-book-btn:hover:not(:disabled) {transform:translateY(-2px);box-shadow:0 10px 25px rgba(227,6,19,0.3);}
-.cart-book-btn:disabled {opacity:0.6;cursor:not-allowed;}
+.cart-total {
+    padding-top:20px;
+    border-top:2px solid #eee;
+    margin-bottom:24px;
+}
+
+.total-line {
+    display:flex;
+    justify-content:space-between;
+    font-size:1.4rem;
+    font-weight:700;
+    color:var(--marine-blue);
+}
+
+#cart-nights-info {
+    display: block;
+    margin-top: 8px;
+    color: #666;
+    font-size: 0.95rem;
+    text-align: right;
+}
+
+.cart-book-btn {
+    width:100%;
+    background:var(--thon-red);
+    color:white;
+    border:none;
+    padding:18px;
+    font-size:1.2rem;
+    font-weight:600;
+    border-radius:16px;
+    cursor:pointer;
+    transition:all 0.2s;
+}
+
+.cart-book-btn:hover:not(:disabled) {
+    transform:translateY(-2px);
+    box-shadow:0 10px 25px rgba(227,6,19,0.3);
+}
+
+.cart-book-btn:disabled {
+    opacity:0.6;
+    cursor:not-allowed;
+}
 
 @media (max-width: 1100px) {
     .modern-cart {display:none !important;}
