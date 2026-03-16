@@ -274,11 +274,11 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
 
 .main-content {flex: 1; min-width: 0;}
 
-/* Romkort – 2 kolonner med plass til 4 rom vertikalt per kolonne */
+/* Romkort – NÅ 2 rader med 4 rom (4 kolonner) */
 .rooms-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);   /* 2 kolonner */
-    grid-auto-rows: minmax(380px, auto);     /* høyde per rad – justert for 4 rom vertikalt */
+    grid-template-columns: repeat(4, 1fr);   /* 4 kolonner = 2 rader med 4 rom */
+    grid-auto-rows: minmax(380px, auto);
     gap: 32px;
 }
 
@@ -327,8 +327,8 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
 
 .modern-cart {
     position: sticky;
-    top: 160px;
-    align-self: flex-start;  /* holder boksen øverst når du scroller */
+    top: 120px;
+    align-self: flex-start;
     background: white;
     border-radius: 24px;
     box-shadow: var(--shadow);
