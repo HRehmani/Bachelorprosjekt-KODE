@@ -14,23 +14,17 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
     backdrop-filter:blur(28px);
     padding:28px 0;
     box-shadow:0 8px 32px rgba(10,37,64,0.25);
-}
-
-.booking-bar .container {
+}.booking-bar .container {
     display:flex;
     align-items:center;
     justify-content:space-between;
-}
-
-.booking-bar h1 {
+}.booking-bar h1 {
     color:var(--thon-red);
     font-size:1.9rem;
     font-weight:700;
     margin-right:120px;
     white-space:nowrap;
-}
-
-.quick-book {
+}.quick-book {
     display:flex;
     gap:28px;
     background:rgba(255,255,255,0.13);
@@ -39,23 +33,17 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
     align-items:flex-end;
     border:1px solid rgba(255,255,255,0.28);
     box-shadow:0 12px 40px rgba(10,37,64,0.3);
-}
-
-.field {
+}.field {
     display:flex;
     flex-direction:column;
     gap:7px;
     min-width:172px;
-}
-
-.field label {
+}.field label {
     font-size:0.88rem;
     font-weight:600;
     color:rgba(255,255,255,0.92);
     padding-left:8px;
-}
-
-.quick-book input,
+}.quick-book input,
 .quick-book select {
     background:rgba(255,255,255,0.96);
     border:none;
@@ -67,24 +55,18 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
     height:58px;
     box-shadow:0 4px 15px rgba(10,37,64,0.12);
     transition:all 0.25s ease;
-}
-
-.quick-book input:focus,
+}.quick-book input:focus,
 .quick-book select:focus {
     outline:none;
     box-shadow:0 0 0 3px rgba(227,6,19,0.35);
     transform:translateY(-1px);
-}
-
-.quick-book select {
+}.quick-book select {
     appearance:none;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='%230A2540' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
     background-position:right 20px center;
     background-repeat:no-repeat;
     padding-right:52px;
-}
-
-.search-btn {
+}.search-btn {
     background:var(--thon-red);
     color:white;
     padding:0 42px;
@@ -98,14 +80,10 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
     white-space:nowrap;
     transition:all 0.25s ease;
     box-shadow:0 6px 20px rgba(227,6,19,0.35);
-}
-
-.search-btn:hover {
+}.search-btn:hover {
     transform:translateY(-2px);
     box-shadow:0 10px 30px rgba(227,6,19,0.45);
-}
-
-.virtual-btn {
+}.virtual-btn {
     background:rgba(255,255,255,0.15);
     color:white;
     padding:0 32px;
@@ -119,20 +97,14 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
     border:1px solid rgba(255,255,255,0.25);
     transition:all 0.25s ease;
     cursor: pointer;
-}
-
-.virtual-btn:hover {
+}.virtual-btn:hover {
     background:rgba(255,255,255,0.25);
     transform:translateY(-1px);
-}
-
-/* ====================== VIRUTAL TOURS DROPDOWN – NÅ PERFEKT ====================== */
+}/* ====================== VIRUTAL TOURS DROPDOWN – NÅ PERFEKT ====================== */
 .virtual-dropdown {
     position: relative;
     display: inline-block;
-}
-
-.virtual-menu {
+}.virtual-menu {
     display: none;
     position: absolute;
     top: calc(100% + 10px);
@@ -146,13 +118,9 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
     z-index: 300;
     border: 1px solid rgba(255,255,255,0.18);
     overflow: hidden;
-}
-
-.virtual-dropdown:hover .virtual-menu {
+}.virtual-dropdown:hover .virtual-menu {
     display: block;
-}
-
-.virtual-menu a {
+}.virtual-menu a {
     display: block;
     padding: 14px 28px;
     color: white;
@@ -160,25 +128,17 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
     font-size: 1.05rem;
     font-weight: 500;
     transition: all 0.2s ease;
-}
-
-.virtual-menu a:hover {
+}.virtual-menu a:hover {
     background: rgba(227,6,19,0.25);
     padding-left: 34px;
 }
-/* ====================== SLUTT VIRUTAL TOURS ====================== */
-
-.search-btn {
+/* ====================== SLUTT VIRUTAL TOURS ====================== */.search-btn {
     margin-left: 12px;
-}
-
-/* ====================== HERO TEKST ====================== */
+}/* ====================== HERO TEKST ====================== */
 .hero {height:100vh;background:url('bilder/thon_hotel_slottsparken.webp') center/cover no-repeat;position:relative;}
 .hero-overlay {position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,37,64,0.25),rgba(10,37,64,0.72));}
 .hero-content {position:relative;z-index:2;color:white;text-align:center;}
-.hero-content h2 {font-size:4.8rem;font-weight:800;}
-
-.hero {
+.hero-content h2 {font-size:4.8rem;font-weight:800;}.hero {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -196,28 +156,20 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
     font-size: 2.1rem;
     font-weight: 500;
     text-shadow: 0 3px 15px rgba(0,0,0,0.5);
-}
-
-/* ====================== NY FINERE "LEGG TIL OPPLEVELSER" ====================== */
+}/* ====================== NY FINERE "LEGG TIL OPPLEVELSER" ====================== */
 #extras-section {
     margin-top: 100px;
-}
-
-#extras-section h3 {
+}#extras-section h3 {
     font-size: 2.5rem;
     font-weight: 700;
     color: var(--marine-blue);
     margin-bottom: 48px;
     text-align: center;
-}
-
-.extras-grid {
+}.extras-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
     gap: 28px;
-}
-
-.extra-card {
+}.extra-card {
     background: var(--card-bg);
     border: 3px solid #f1f5f9;
     border-radius: 24px;
@@ -228,58 +180,55 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
     cursor: pointer;
     transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: var(--shadow);
-}
-
-.extra-card:hover {
+}.extra-card:hover {
     border-color: var(--thon-red);
     transform: translateY(-8px);
     box-shadow: 0 25px 60px rgba(227,6,19,0.18);
-}
-
-.extra-card input[type="checkbox"] {
+}.extra-card input[type="checkbox"] {
     width: 28px;
     height: 28px;
     accent-color: var(--thon-red);
     cursor: pointer;
     margin-top: 3px;
     flex-shrink: 0;
-}
-
-.extra-info {
+}.extra-info {
     flex: 1;
-}
-
-.extra-info span {
+}.extra-info span {
     font-size: 1.35rem;
     font-weight: 600;
     color: var(--marine-blue);
     display: block;
     margin-bottom: 6px;
-}
-
-.extra-info strong {
+}.extra-info strong {
     font-size: 1.48rem;
     color: var(--thon-red);
     font-weight: 700;
 }
-/* ====================== SLUTT NY OPPLEVELSER ====================== */
-
-.package-builder {padding:120px 0;background:var(--light-bg);}
-
-.package-builder.container {
+/* ====================== SLUTT NY OPPLEVELSER ====================== */.package-builder {padding:120px 0;background:var(--light-bg);}.package-builder.container {
     display: flex;
     gap: 40px;
     align-items: flex-start;
-}
-
-.main-content {flex: 1; min-width: 0;}
-
-/* Romkort – NÅ ENDA BREDERE (350px min-width) */
+}.main-content {flex: 1; min-width: 0;}/* Romkort – 2 kolonner med plass til 4 rom vertikalt per kolonne */
 .rooms-grid {
     display: grid;
-    grid-template-columns: repeat(4, minmax(350px, 1fr));   /* enda bredere romkort */
-    grid-auto-rows: minmax(380px, auto);
-    gap: 18px;   /* enda mindre gap så de får maks plass */
+    grid-template-columns: repeat(4, minmax(340px, 1fr));   /* 4 kolonner på store skjermer */
+    grid-auto-rows: minmax(430px, auto);     /* høyde justert så alt passer uten sidescroll */
+    gap: 32px;
+}
+
+/* ====================== RESPONSIVITET – KUN DETTE ER LAGT TIL ====================== */
+@media (max-width: 1650px) {
+    .rooms-grid { grid-template-columns: repeat(3, minmax(320px, 1fr)); }
+}
+@media (max-width: 1250px) {
+    .rooms-grid { grid-template-columns: repeat(2, minmax(300px, 1fr)); gap: 24px; }
+}
+@media (max-width: 1100px) {
+    .modern-cart {display:none !important;}
+    .package-builder.container {flex-direction:column;}
+    .rooms-grid {grid-template-columns: repeat(2, minmax(300px, 1fr));}
+    .summary {max-width: 100%; margin-left:0; margin-right:0;}
+    .container {padding:0 20px;}
 }
 
 .card {background:var(--card-bg);border-radius:24px;overflow:hidden;box-shadow:var(--shadow);text-align:center;padding:26px;transition:all 0.3s ease;}
@@ -287,18 +236,12 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
 .slider-container {position:relative;margin-bottom:24px;}
 .slider-btn {position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.5);color:white;border:none;width:44px;height:44px;font-size:28px;cursor:pointer;border-radius:50%;display:flex;align-items:center;justify-content:center;}
 .slider-btn:hover {background:rgba(0,0,0,0.7);}
-.prev {left:12px;} .next {right:12px;}
-
-.details-btn {margin-top:12px;padding:12px 24px;background:#f1f5f9;color:var(--marine-blue);border:none;border-radius:12px;cursor:pointer;width:100%;font-weight:500;}
-.select-btn {margin-top:8px;padding:14px 36px;background:var(--marine-blue);color:white;border:none;border-radius:12px;cursor:pointer;width:100%;font-weight:600;}
-
-.room-card.selected {
+.prev {left:12px;} .next {right:12px;}.details-btn {margin-top:12px;padding:12px 24px;background:#f1f5f9;color:var(--marine-blue);border:none;border-radius:12px;cursor:pointer;width:100%;font-weight:500;}
+.select-btn {margin-top:8px;padding:14px 36px;background:var(--marine-blue);color:white;border:none;border-radius:12px;cursor:pointer;width:100%;font-weight:600;}.room-card.selected {
     border: 4px solid var(--thon-red);
     box-shadow: 0 0 0 8px rgba(227,6,19,0.18);
     transform: scale(1.02);
-}
-
-/* Totalsum (uendret) */
+}/* Totalsum (uendret) */
 .summary {
     margin-top: 80px;
     background:var(--marine-blue);
@@ -314,21 +257,15 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
     margin-right: auto;
 }
 #total-price {font-size:3.5rem;font-weight:700;}
-#book-btn {padding:20px 60px;font-size:1.5rem;background:var(--thon-red);border:none;border-radius:16px;color:white;cursor:pointer;}
-
-/* Modals og cart (kun sticky lagt til) */
+#book-btn {padding:20px 60px;font-size:1.5rem;background:var(--thon-red);border:none;border-radius:16px;color:white;cursor:pointer;}/* Modals og cart (kun sticky lagt til) */
 .room-modal {position:fixed;inset:0;background:rgba(0,0,0,0.85);display:none;z-index:9999;align-items:center;justify-content:center;}
 .modal-content {background:white;max-width:720px;width:90%;border-radius:24px;padding:40px;position:relative;max-height:90vh;overflow-y:auto;}
-.close-modal {position:absolute;top:20px;right:30px;font-size:32px;cursor:pointer;color:#666;}
-
-.tour-modal {position:fixed;inset:0;background:black;display:none;z-index:9999;}
+.close-modal {position:absolute;top:20px;right:30px;font-size:32px;cursor:pointer;color:#666;}.tour-modal {position:fixed;inset:0;background:black;display:none;z-index:9999;}
 .tour-modal iframe {width:100%;height:100%;}
-.close-tour {position:absolute;top:30px;right:40px;color:white;font-size:2.5rem;cursor:pointer;z-index:10000;}
-
-.modern-cart {
+.close-tour {position:absolute;top:30px;right:40px;color:white;font-size:2.5rem;cursor:pointer;z-index:10000;}.modern-cart {
     position: sticky;
-    top: 120px;
-    align-self: flex-start;
+    top: 160px;
+    align-self: flex-start;  /* holder boksen øverst når du scroller */
     background: white;
     border-radius: 24px;
     box-shadow: var(--shadow);
@@ -337,9 +274,7 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
     height: fit-content;
     flex-shrink: 0;
     z-index: 10;
-}
-
-.cart-header {display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid #eee;}
+}.cart-header {display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid #eee;}
 .cart-header h3 {font-size:1.35rem;font-weight:600;color:var(--marine-blue);margin:0;}
 .cart-count {background:var(--thon-red);color:white;font-size:0.85rem;font-weight:600;padding:4px 10px;border-radius:20px;}
 .cart-items {margin-bottom:28px;min-height:80px;}
@@ -353,16 +288,12 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
 .total-line {display:flex;justify-content:space-between;font-size:1.4rem;font-weight:700;color:var(--marine-blue);}
 .cart-book-btn {width:100%;background:var(--thon-red);color:white;border:none;padding:18px;font-size:1.2rem;font-weight:600;border-radius:16px;cursor:pointer;transition:all 0.2s;}
 .cart-book-btn:hover:not(:disabled) {transform:translateY(-2px);box-shadow:0 10px 25px rgba(227,6,19,0.3);}
-.cart-book-btn:disabled {opacity:0.6;cursor:not-allowed;}
-
-@media (max-width: 1100px) {
+.cart-book-btn:disabled {opacity:0.6;cursor:not-allowed;}@media (max-width: 1100px) {
     .modern-cart {display:none !important;}
     .package-builder.container {flex-direction:column;}
     .rooms-grid {grid-template-columns: repeat(2, minmax(300px, 1fr));}
     .summary {max-width: 100%; margin-left:0; margin-right:0;}
-}
-
-/* Lightbox (uendret) */
+}/* Lightbox (uendret) */
 .lightbox {
     position: fixed;
     inset: 0;
@@ -372,9 +303,7 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
     justify-content: center;
     z-index: 99999;
     cursor: zoom-out;
-}
-
-.lightbox-content {position: relative;max-width: 92vw;max-height: 92vh;}
+}.lightbox-content {position: relative;max-width: 92vw;max-height: 92vh;}
 .lightbox-image {max-width: 100%;max-height: 92vh;border-radius: 16px;box-shadow: 0 30px 80px rgba(0,0,0,0.6);display: block;}
 .lightbox-nav {position: absolute;top: 50%;transform: translateY(-50%);background: rgba(255,255,255,0.15);color: white;border: none;width: 60px;height: 60px;font-size: 42px;display: flex;align-items: center;justify-content: center;border-radius: 50%;cursor: pointer;transition: all 0.2s;backdrop-filter: blur(10px);}
 .lightbox-nav:hover {background: var(--thon-red);transform: translateY(-50%) scale(1.1);}
