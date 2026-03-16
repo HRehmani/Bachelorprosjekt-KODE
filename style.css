@@ -1,7 +1,7 @@
 * {margin:0;padding:0;box-sizing:border-box;}
 :root {--thon-red:#E30613;--marine-blue:#0A2540;--light-bg:#F8FAFC;--card-bg:#FFFFFF;--shadow:0 12px 40px rgba(10,37,64,0.12);--glass:rgba(255,255,255,0.18);}
 body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--marine-blue);line-height:1.6;}
-.container {max-width:1920px;margin:0 auto;padding:0 40px;}
+.container {max-width:1680px;margin:0 auto;padding:0 40px;} /* senket max-width + bedre padding */
 
 /* ====================== NY & FINERE BOOKING-BAR ====================== */
 .booking-bar {
@@ -126,7 +126,7 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
     transform:translateY(-1px);
 }
 
-/* ====================== VIRUTAL TOURS DROPDOWN – NÅ PERFEKT ====================== */
+/* ====================== VIRUTAL TOURS DROPDOWN ====================== */
 .virtual-dropdown {
     position: relative;
     display: inline-block;
@@ -166,120 +166,40 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
     background: rgba(227,6,19,0.25);
     padding-left: 34px;
 }
-/* ====================== SLUTT VIRUTAL TOURS ====================== */
 
 .search-btn {
     margin-left: 12px;
 }
 
-/* ====================== HERO TEKST ====================== */
+/* ====================== HERO ====================== */
 .hero {height:100vh;background:url('bilder/thon_hotel_slottsparken.webp') center/cover no-repeat;position:relative;}
 .hero-overlay {position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,37,64,0.25),rgba(10,37,64,0.72));}
 .hero-content {position:relative;z-index:2;color:white;text-align:center;}
 .hero-content h2 {font-size:4.8rem;font-weight:800;}
+.hero-content p {font-size:2.1rem;font-weight:500;}
 
-.hero {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.hero .hero-content {
-    max-width: 920px;
-    padding: 0 40px;
-    text-align: center;
-}
-.hero-content h2 {
-    margin-bottom: 16px;
-    text-shadow: 0 4px 20px rgba(0,0,0,0.6);
-}
-.hero-content p {
-    font-size: 2.1rem;
-    font-weight: 500;
-    text-shadow: 0 3px 15px rgba(0,0,0,0.5);
-}
+/* ====================== EXTRAS ====================== */
+#extras-section {margin-top:100px;}
+#extras-section h3 {font-size:2.5rem;font-weight:700;color:var(--marine-blue);margin-bottom:48px;text-align:center;}
+.extras-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:28px;}
+.extra-card {background:var(--card-bg);border:3px solid #f1f5f9;border-radius:24px;padding:28px;display:flex;align-items:center;gap:24px;cursor:pointer;transition:all 0.35s cubic-bezier(0.4,0,0.2,1);box-shadow:var(--shadow);}
+.extra-card:hover {border-color:var(--thon-red);transform:translateY(-8px);box-shadow:0 25px 60px rgba(227,6,19,0.18);}
 
-/* ====================== NY FINERE "LEGG TIL OPPLEVELSER" ====================== */
-#extras-section {
-    margin-top: 100px;
-}
-
-#extras-section h3 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--marine-blue);
-    margin-bottom: 48px;
-    text-align: center;
-}
-
-.extras-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 28px;
-}
-
-.extra-card {
-    background: var(--card-bg);
-    border: 3px solid #f1f5f9;
-    border-radius: 24px;
-    padding: 28px;
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    cursor: pointer;
-    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: var(--shadow);
-}
-
-.extra-card:hover {
-    border-color: var(--thon-red);
-    transform: translateY(-8px);
-    box-shadow: 0 25px 60px rgba(227,6,19,0.18);
-}
-
-.extra-card input[type="checkbox"] {
-    width: 28px;
-    height: 28px;
-    accent-color: var(--thon-red);
-    cursor: pointer;
-    margin-top: 3px;
-    flex-shrink: 0;
-}
-
-.extra-info {
-    flex: 1;
-}
-
-.extra-info span {
-    font-size: 1.35rem;
-    font-weight: 600;
-    color: var(--marine-blue);
-    display: block;
-    margin-bottom: 6px;
-}
-
-.extra-info strong {
-    font-size: 1.48rem;
-    color: var(--thon-red);
-    font-weight: 700;
-}
-/* ====================== SLUTT NY OPPLEVELSER ====================== */
-
-.package-builder {padding:120px 0;background:var(--light-bg);}
-
-.package-builder.container {
-    display: flex;
-    gap: 40px;
-    align-items: flex-start;
-}
-
-.main-content {flex: 1; min-width: 0;}
-
-/* Romkort – NÅ ENDA BREDERE (350px min-width) */
+/* ====================== ROM GRID – NÅ FULLT RESPONSIV ====================== */
 .rooms-grid {
     display: grid;
-    grid-template-columns: repeat(4, minmax(350px, 1fr));   /* enda bredere romkort */
+    grid-template-columns: repeat(4, minmax(340px, 1fr));   /* 4 kolonner på store skjermer */
     grid-auto-rows: minmax(380px, auto);
-    gap: 18px;   /* enda mindre gap så de får maks plass */
+    gap: 24px;
+}
+
+/* === RESPONSIVE BREAKPOINTS === */
+@media (max-width: 1650px) {
+    .rooms-grid { grid-template-columns: repeat(3, minmax(320px, 1fr)); }
+}
+
+@media (max-width: 1250px) {
+    .rooms-grid { grid-template-columns: repeat(2, minmax(300px, 1fr)); gap: 20px; }
 }
 
 .card {background:var(--card-bg);border-radius:24px;overflow:hidden;box-shadow:var(--shadow);text-align:center;padding:26px;transition:all 0.3s ease;}
@@ -298,7 +218,7 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
     transform: scale(1.02);
 }
 
-/* Totalsum (uendret) */
+/* Summary */
 .summary {
     margin-top: 80px;
     background:var(--marine-blue);
@@ -316,15 +236,7 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
 #total-price {font-size:3.5rem;font-weight:700;}
 #book-btn {padding:20px 60px;font-size:1.5rem;background:var(--thon-red);border:none;border-radius:16px;color:white;cursor:pointer;}
 
-/* Modals og cart (kun sticky lagt til) */
-.room-modal {position:fixed;inset:0;background:rgba(0,0,0,0.85);display:none;z-index:9999;align-items:center;justify-content:center;}
-.modal-content {background:white;max-width:720px;width:90%;border-radius:24px;padding:40px;position:relative;max-height:90vh;overflow-y:auto;}
-.close-modal {position:absolute;top:20px;right:30px;font-size:32px;cursor:pointer;color:#666;}
-
-.tour-modal {position:fixed;inset:0;background:black;display:none;z-index:9999;}
-.tour-modal iframe {width:100%;height:100%;}
-.close-tour {position:absolute;top:30px;right:40px;color:white;font-size:2.5rem;cursor:pointer;z-index:10000;}
-
+/* Modern cart */
 .modern-cart {
     position: sticky;
     top: 120px;
@@ -333,33 +245,19 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
     border-radius: 24px;
     box-shadow: var(--shadow);
     padding: 28px 24px;
-    width: 300px;
+    width: 310px;
     height: fit-content;
     flex-shrink: 0;
     z-index: 10;
 }
 
-.cart-header {display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid #eee;}
-.cart-header h3 {font-size:1.35rem;font-weight:600;color:var(--marine-blue);margin:0;}
-.cart-count {background:var(--thon-red);color:white;font-size:0.85rem;font-weight:600;padding:4px 10px;border-radius:20px;}
-.cart-items {margin-bottom:28px;min-height:80px;}
-.cart-item {display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #f1f1f1;}
-.cart-item:last-child {border-bottom:none;}
-.cart-item-name {font-weight:500;color:var(--marine-blue);}
-.cart-item-price {font-weight:600;color:var(--thon-red);}
-.cart-item-remove {background:none;border:none;color:#999;font-size:1.1rem;cursor:pointer;padding:4px 8px;}
-.cart-item-remove:hover {color:var(--thon-red);}
-.cart-total {padding-top:20px;border-top:2px solid #eee;margin-bottom:24px;}
-.total-line {display:flex;justify-content:space-between;font-size:1.4rem;font-weight:700;color:var(--marine-blue);}
-.cart-book-btn {width:100%;background:var(--thon-red);color:white;border:none;padding:18px;font-size:1.2rem;font-weight:600;border-radius:16px;cursor:pointer;transition:all 0.2s;}
-.cart-book-btn:hover:not(:disabled) {transform:translateY(-2px);box-shadow:0 10px 25px rgba(227,6,19,0.3);}
-.cart-book-btn:disabled {opacity:0.6;cursor:not-allowed;}
-
+/* ====================== MEDIA QUERY FOR MINDRE SKJERMER ====================== */
 @media (max-width: 1100px) {
     .modern-cart {display:none !important;}
     .package-builder.container {flex-direction:column;}
     .rooms-grid {grid-template-columns: repeat(2, minmax(300px, 1fr));}
     .summary {max-width: 100%; margin-left:0; margin-right:0;}
+    .container {padding:0 20px;}
 }
 
 /* Lightbox (uendret) */
