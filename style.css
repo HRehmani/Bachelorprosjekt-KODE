@@ -277,8 +277,10 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
 /* Romkort (uendret) */
 .rooms-grid {
     display: grid;
-    grid-template-columns: repeat(4, minmax(365px, 1fr));
+    grid-template-columns: repeat(2, 1fr);   /* 2 kolonner */
+    grid-auto-rows: minmax(400px, auto);     /* sikrer at hvert kort tar plass til 4 i høyden */
     gap: 32px;
+}
 }
 
 .card {background:var(--card-bg);border-radius:24px;overflow:hidden;box-shadow:var(--shadow);text-align:center;padding:26px;transition:all 0.3s ease;}
@@ -402,8 +404,18 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
 
 /* Sticky cart – bredde og posisjon tilpasser seg */
 .modern-cart {
-    width: clamp(280px, 22vw, 340px);
-    top: clamp(120px, 15vh, 160px);
+    position: sticky;
+    top: 160px;                  /* starter 160px fra toppen – juster hvis du vil høyere/lavere */
+    align-self: flex-start;      /* holder den øverst i flex-containeren */
+    background: white;
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    padding: 28px 24px;
+    width: 300px;
+    height: fit-content;
+    flex-shrink: 0;
+    z-index: 10;
+}
 }
 
 /* Summary – bredde og padding tilpasser seg */
