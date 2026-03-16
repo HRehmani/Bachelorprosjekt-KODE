@@ -295,29 +295,13 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
 .lightbox-close {position: absolute;top: -50px;right: 0;font-size: 42px;color: white;cursor: pointer;z-index: 10;text-shadow: 0 2px 10px rgba(0,0,0,0.5);}
 .lightbox-counter {position: absolute;bottom: -45px;left: 50%;transform: translateX(-50%);color: white;font-size: 1.1rem;background: rgba(0,0,0,0.5);padding: 6px 18px;border-radius: 30px;backdrop-filter: blur(10px);}
 
-/* ====================== RESPONSIVITET – KUN DETTE ER LAGT TIL ====================== */
-@media (max-width: 1400px) {
-    .quick-book {
-        gap: 16px;
-        padding: 18px 28px;
-    }
-    .field {
-        min-width: 150px;
-    }
-    .search-btn {
-        padding: 0 32px;
-    }
+/* ====================== KUN RESPONSIVITET FOR ROM-DELEN (ingen andre endringer) ====================== */
+@media (max-width: 1650px) {
+    .rooms-grid { grid-template-columns: repeat(3, minmax(320px, 1fr)); gap: 24px; }
 }
-@media (max-width: 1100px) {
-    .quick-book {
-        gap: 12px;
-        padding: 16px 20px;
-        flex-wrap: wrap;
-    }
-    .field {
-        min-width: 140px;
-    }
-    .container {
-        padding: 0 20px;
-    }
+@media (max-width: 1250px) {
+    .rooms-grid { grid-template-columns: repeat(2, minmax(300px, 1fr)); gap: 20px; }
+}
+@media (max-width: 900px) {
+    .rooms-grid { grid-template-columns: repeat(1, minmax(300px, 1fr)); gap: 20px; }
 }
