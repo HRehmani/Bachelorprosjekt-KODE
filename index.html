@@ -15,7 +15,12 @@
         <div class="quick-book">
             <div class="field"><label>Innsjekk</label><input type="date" id="checkin" required></div>
             <div class="field"><label>Utsjekk</label><input type="date" id="checkout" required></div>
-            <div class="field"><label>Gjester</label><select id="guests"><option value="1">1 gjest</option><option value="2" selected>2 gjester</option><option value="3">3 gjester</option><option value="4">4 gjester</option></select></div>
+            <div class="field"><label>Gjester</label><select id="guests">
+                <option value="1">1 gjest</option>
+                <option value="2" selected>2 gjester</option>
+                <option value="3">3 gjester</option>
+                <option value="4">4 gjester</option>
+            </select></div>
             <button onclick="document.getElementById('room-section').scrollIntoView({behavior:'smooth'})" class="search-btn">Sjekk tilgjengelighet</button>
             <div class="virtual-dropdown">
                 <button class="virtual-btn">Virtual Tours ▾</button>
@@ -40,7 +45,7 @@
 <section id="room-section" class="package-builder container">
     <h2>Bygg din opplevelse</h2>
     
-    <!-- ====================== MODERNE HANDLEKURV (venstre + sticky) ====================== -->
+    <!-- ====================== MODERNE HANDLEKURV ====================== -->
     <aside id="modern-cart" class="modern-cart">
         <div class="cart-header">
             <h3>Din opplevelse</h3>
@@ -211,7 +216,6 @@
     <iframe id="tourFrame" frameborder="0" allowfullscreen></iframe>
 </div>
 
-<!-- ====================== NY MODERNE BILDE LIGHTBOX ====================== -->
 <div id="lightbox" class="lightbox">
     <div class="lightbox-content">
         <span class="lightbox-close" onclick="closeLightbox()">✕</span>
@@ -221,8 +225,7 @@
         <div id="lightbox-counter" class="lightbox-counter"></div>
     </div>
 </div>
-<!-- ====================== SLUTT LIGHTBOX ====================== -->
 
-<script src="Javascript.js"></script>
+<script src="Javascript.js"></script>  <!-- Endre til "javascript.js" hvis du renamed fila -->
 </body>
 </html>
