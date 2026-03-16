@@ -360,6 +360,129 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
     .summary {max-width: 100%; margin-left:0; margin-right:0;}
 }
 
+/* Små skjermer / mobil (under 768px) */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 20px; /* mindre side-padding på mobil */
+    }
+
+    .booking-bar {
+        padding: 15px 0; /* mindre høyde på header */
+    }
+
+    .booking-bar .container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .quick-book {
+        flex-direction: column;
+        width: 100%;
+        padding: 15px;
+        gap: 15px;
+        border-radius: 16px;
+    }
+
+    .field {
+        min-width: 100%;
+    }
+
+    .search-btn,
+    .virtual-btn {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .hero-content h2 {
+        font-size: 3rem; /* mindre overskrift på mobil */
+    }
+
+    .hero-content p {
+        font-size: 1.4rem;
+    }
+
+    .rooms-grid {
+        grid-template-columns: 1fr; /* 1 kolonne på mobil */
+        gap: 24px;
+    }
+
+    .room-image {
+        height: 220px; /* mindre bilder for å spare plass */
+    }
+
+    .slider-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 24px;
+    }
+
+    .package-builder {
+        padding: 60px 0; /* mindre vertikal padding */
+    }
+
+    .summary {
+        padding: 30px;
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    #total-price {
+        font-size: 2.5rem;
+    }
+
+    #book-btn,
+    .cart-book-btn {
+        width: 100%;
+        padding: 16px;
+        font-size: 1.2rem;
+    }
+
+    .extras-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .extra-card {
+        padding: 20px;
+    }
+}
+
+/* Mellomstore skjermer (tablett, 769–1024px) */
+@media (max-width: 1024px) {
+    .rooms-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 kolonner på tablett */
+    }
+
+    .booking-bar h1 {
+        font-size: 1.6rem;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .quick-book {
+        gap: 20px;
+        padding: 18px 30px;
+    }
+}
+
+/* For ekstra små skjermer (under 480px – gamle mobiler) */
+@media (max-width: 480px) {
+    .hero-content h2 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+
+    .select-btn,
+    .details-btn {
+        padding: 12px;
+        font-size: 1rem;
+    }
+}
+
 /* Lightbox (uendret) */
 .lightbox {
     position: fixed;
