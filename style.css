@@ -274,12 +274,12 @@ body {font-family:'Inter',sans-serif;background:var(--light-bg);color:var(--mari
 
 .main-content {flex: 1; min-width: 0;}
 
-/* Romkort – NÅ 2 rader med 4 rom (4 kolonner) */
+/* Romkort – NÅ litt bredere (min-width økt + litt mindre gap) */
 .rooms-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);   /* 4 kolonner = 2 rader med 4 rom */
+    grid-template-columns: repeat(4, minmax(290px, 1fr));   /* Litt bredere minimumsbredde på hvert kort */
     grid-auto-rows: minmax(380px, auto);
-    gap: 32px;
+    gap: 24px;   /* Redusert gap så kortene får mer plass */
 }
 
 .card {background:var(--card-bg);border-radius:24px;overflow:hidden;box-shadow:var(--shadow);text-align:center;padding:26px;transition:all 0.3s ease;}
