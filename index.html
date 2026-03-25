@@ -9,10 +9,19 @@
 </head>
 <body>
 
-<header class="booking-bar">
+<!-- ====================== MOBIL MENY-KNAPP ====================== -->
+<button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Åpne meny">
+    <span></span><span></span><span></span>
+</button>
+
+<header class="booking-bar" id="booking-bar">
     <div class="container">
         <h1>Thon Hotel Slottsparken</h1>
-        <div class="quick-book">
+
+        <!-- Hamburger-knapp kun synlig på mobil (inne i header for layout) -->
+        <button class="header-close-btn" id="header-close-btn" aria-label="Lukk meny">✕</button>
+
+        <div class="quick-book" id="quick-book">
             <div class="field"><label>Innsjekk</label><input type="date" id="checkin" required></div>
             <div class="field"><label>Utsjekk</label><input type="date" id="checkout" required></div>
             <div class="field"><label>Gjester</label><select id="guests">
@@ -39,12 +48,13 @@
     <div class="container hero-content">
         <h2>Sentrumsnært ved Slottsparken</h2>
         <p>Bygg din egen opplevelse</p>
+        <button class="hero-cta" onclick="document.getElementById('room-section').scrollIntoView({behavior:'smooth'})">Se romtyper ↓</button>
     </div>
 </section>
 
 <section id="room-section" class="package-builder container">
-    <h2>Bygg din opplevelse</h2>
-    
+    <h2 class="section-title">Bygg din opplevelse</h2>
+
     <!-- ====================== MODERNE HANDLEKURV ====================== -->
     <aside id="modern-cart" class="modern-cart">
         <div class="cart-header">
@@ -61,6 +71,15 @@
         </div>
         <button id="cart-book-btn" class="cart-book-btn" disabled onclick="document.querySelector('.summary').scrollIntoView({behavior:'smooth'})">Fullfør booking</button>
     </aside>
+
+    <!-- ====================== MOBIL FLOATING CART ====================== -->
+    <div id="mobile-cart-bar" class="mobile-cart-bar" style="display:none;">
+        <div class="mobile-cart-info">
+            <span id="mobile-cart-name">Ingen valg</span>
+            <strong id="mobile-cart-price">0 kr</strong>
+        </div>
+        <button onclick="document.querySelector('.summary').scrollIntoView({behavior:'smooth'})">Book nå</button>
+    </div>
     <!-- ====================== SLUTT HANDLEKURV ====================== -->
 
     <div class="main-content">
@@ -72,7 +91,7 @@
                 <div class="card room-card" data-price="1145" data-room-index="0">
                     <div class="slider-container">
                         <button class="slider-btn prev" onclick="prevImage(this)">‹</button>
-                        <img src="bilder/Thon_Hotel_Slottsparken_Standard_Rom%201.webp" class="room-image" alt="">
+                        <img src="bilder/Thon_Hotel_Slottsparken_Standard_Rom%201.webp" class="room-image" alt="Standard Double rom">
                         <button class="slider-btn next" onclick="nextImage(this)">›</button>
                     </div>
                     <h4>Standard Double</h4>
@@ -86,7 +105,7 @@
                 <div class="card room-card" data-price="995" data-room-index="1">
                     <div class="slider-container">
                         <button class="slider-btn prev" onclick="prevImage(this)">‹</button>
-                        <img src="bilder/Thon_Hotel_Slottsparken_Standard_Room_Single%201.webp" class="room-image" alt="">
+                        <img src="bilder/Thon_Hotel_Slottsparken_Standard_Room_Single%201.webp" class="room-image" alt="Standard Single rom">
                         <button class="slider-btn next" onclick="nextImage(this)">›</button>
                     </div>
                     <h4>Standard Single</h4>
@@ -100,7 +119,7 @@
                 <div class="card room-card" data-price="1345" data-room-index="2">
                     <div class="slider-container">
                         <button class="slider-btn prev" onclick="prevImage(this)">‹</button>
-                        <img src="bilder/Thon_Hotel_Slottsparken_Superior_Room%201.webp" class="room-image" alt="">
+                        <img src="bilder/Thon_Hotel_Slottsparken_Superior_Room%201.webp" class="room-image" alt="Superior rom">
                         <button class="slider-btn next" onclick="nextImage(this)">›</button>
                     </div>
                     <h4>Superior</h4>
@@ -114,7 +133,7 @@
                 <div class="card room-card" data-price="1395" data-room-index="3">
                     <div class="slider-container">
                         <button class="slider-btn prev" onclick="prevImage(this)">‹</button>
-                        <img src="bilder/Thon_Hotel_Slottsparken_Superior_Rom_twin%201.webp" class="room-image" alt="">
+                        <img src="bilder/Thon_Hotel_Slottsparken_Superior_Rom_twin%201.webp" class="room-image" alt="Superior Twin rom">
                         <button class="slider-btn next" onclick="nextImage(this)">›</button>
                     </div>
                     <h4>Superior Twin</h4>
@@ -128,7 +147,7 @@
                 <div class="card room-card" data-price="1890" data-room-index="4">
                     <div class="slider-container">
                         <button class="slider-btn prev" onclick="prevImage(this)">‹</button>
-                        <img src="bilder/Thon_Hotel_Slottsparken_Business_Room%201.webp" class="room-image" alt="">
+                        <img src="bilder/Thon_Hotel_Slottsparken_Business_Room%201.webp" class="room-image" alt="Business rom">
                         <button class="slider-btn next" onclick="nextImage(this)">›</button>
                     </div>
                     <h4>Business</h4>
@@ -142,7 +161,7 @@
                 <div class="card room-card" data-price="3490" data-room-index="5">
                     <div class="slider-container">
                         <button class="slider-btn prev" onclick="prevImage(this)">‹</button>
-                        <img src="bilder/Thon_Hotel_Slottsparken_Suite%201.webp" class="room-image" alt="">
+                        <img src="bilder/Thon_Hotel_Slottsparken_Suite%201.webp" class="room-image" alt="Suite">
                         <button class="slider-btn next" onclick="nextImage(this)">›</button>
                     </div>
                     <h4>Suite</h4>
@@ -156,7 +175,7 @@
                 <div class="card room-card" data-price="2890" data-room-index="6">
                     <div class="slider-container">
                         <button class="slider-btn prev" onclick="prevImage(this)">‹</button>
-                        <img src="bilder/thon-hotel-slottsparken-juniorsuite-1%201.webp" class="room-image" alt="">
+                        <img src="bilder/thon-hotel-slottsparken-juniorsuite-1%201.webp" class="room-image" alt="Junior Suite">
                         <button class="slider-btn next" onclick="nextImage(this)">›</button>
                     </div>
                     <h4>Junior Suite</h4>
@@ -170,7 +189,7 @@
                 <div class="card room-card" data-price="2545" data-room-index="7">
                     <div class="slider-container">
                         <button class="slider-btn prev" onclick="prevImage(this)">‹</button>
-                        <img src="bilder/thon-hotel-slottsparken-leilighet-64%201.webp" class="room-image" alt="">
+                        <img src="bilder/thon-hotel-slottsparken-leilighet-64%201.webp" class="room-image" alt="2-roms Leilighet">
                         <button class="slider-btn next" onclick="nextImage(this)">›</button>
                     </div>
                     <h4>2-roms Leilighet</h4>
@@ -204,6 +223,7 @@
     </div>
 </section>
 
+<!-- Romdetaljer modal -->
 <div id="roomModal" class="room-modal">
     <div class="modal-content">
         <span class="close-modal" onclick="closeRoomModal()">✕</span>
@@ -211,11 +231,13 @@
     </div>
 </div>
 
+<!-- Virtual tour modal -->
 <div id="tourModal" class="tour-modal">
     <span class="close-tour" onclick="closeTour()">✕</span>
     <iframe id="tourFrame" frameborder="0" allowfullscreen></iframe>
 </div>
 
+<!-- Lightbox -->
 <div id="lightbox" class="lightbox">
     <div class="lightbox-content">
         <span class="lightbox-close" onclick="closeLightbox()">✕</span>
@@ -226,6 +248,6 @@
     </div>
 </div>
 
-<script src="Javascript.js"></script>  <!-- Endre til "javascript.js" hvis du renamed fila -->
+<script src="Javascript.js"></script>
 </body>
 </html>
