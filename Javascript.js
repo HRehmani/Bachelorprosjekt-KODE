@@ -71,22 +71,33 @@ const roomImages = [
     ]
 ];
 
+// ====================== ROM-VALG ======================
 function selectRoom(btn) {
     document.querySelectorAll('.room-card').forEach(c => c.classList.remove('selected'));
     btn.parentElement.classList.add('selected');
     selectedRoomPrice = parseInt(btn.parentElement.dataset.price);
     selectedRoomName = btn.parentElement.querySelector('h4').textContent;
     document.getElementById('extras-section').style.display = 'block';
+
+    // Scroll til extras på mobil
+    if (window.innerWidth < 768) {
+        setTimeout(() => {
+            document.getElementById('extras-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+    }
+
     updateTotal();
 }
 
+// ====================== BILDESLIDER ======================
 function prevImage(btn) {
     const container = btn.parentElement;
     const img = container.querySelector('.room-image');
     const card = container.parentElement;
     const index = parseInt(card.dataset.roomIndex);
     const images = roomImages[index];
-    let current = images.findIndex(src => img.src.includes(src.split('/').pop()));
+    let current = images.findIndex(src => img.src.includes(decodeURIComponent(src).split('/').pop()));
+    if (current === -1) current = 0;
     let newIdx = (current - 1 + images.length) % images.length;
     img.src = images[newIdx];
 }
@@ -97,11 +108,13 @@ function nextImage(btn) {
     const card = container.parentElement;
     const index = parseInt(card.dataset.roomIndex);
     const images = roomImages[index];
-    let current = images.findIndex(src => img.src.includes(src.split('/').pop()));
+    let current = images.findIndex(src => img.src.includes(decodeURIComponent(src).split('/').pop()));
+    if (current === -1) current = 0;
     let newIdx = (current + 1) % images.length;
     img.src = images[newIdx];
 }
 
+// ====================== ROMDETALJER MODAL ======================
 function showRoomDetails(index) {
     const info = roomInfo[index];
     let html = `<h2>${info.title}</h2><p><strong>Størrelse:</strong> ${info.size}</p><ul>`;
@@ -109,31 +122,145 @@ function showRoomDetails(index) {
     html += `</ul>`;
     document.getElementById('modalContent').innerHTML = html;
     document.getElementById('roomModal').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
 }
 
 function closeRoomModal() {
     document.getElementById('roomModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
 }
 
-function updateTotal() {
+// Klikk utenfor modal for å lukke
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('roomModal').addEventListener('click', function(e) {
+        if (e.target === this) closeRoomModal();
+    });
+});
+
+// ====================== TOTALPRIS-OPPDATERING ======================
+function _updateSummary() {
     let extrasTotal = 0;
     const selectedExtras = [];
+
     document.querySelectorAll('#extras-section input:checked').forEach(cb => {
         extrasTotal += parseInt(cb.dataset.price);
         selectedExtras.push(cb.dataset.name);
     });
+
     const grandTotal = selectedRoomPrice + extrasTotal;
     document.getElementById('total-price').textContent = grandTotal.toLocaleString('no-NO') + ' kr';
+
     if (selectedRoomPrice > 0) {
         document.getElementById('package-info').textContent = selectedRoomName;
         document.getElementById('book-btn').disabled = false;
-        let html = '<strong>Valgt pakke:</strong><ul>';
-        selectedExtras.forEach(item => html += `<li>${item}</li>`);
+        let html = '<strong>Valgt pakke:</strong><ul style="margin-top:10px; padding-left:4px; list-style:none;">';
+        html += `<li style="padding:4px 0;">🛏 ${selectedRoomName}</li>`;
+        selectedExtras.forEach(item => html += `<li style="padding:4px 0;">✓ ${item}</li>`);
         html += '</ul>';
         document.getElementById('selected-items').innerHTML = html;
+    } else {
+        document.getElementById('package-info').textContent = 'Velg rom for å starte pakken';
+        document.getElementById('book-btn').disabled = true;
+        document.getElementById('selected-items').innerHTML = '';
     }
 }
 
+// ====================== MODERNE HANDLEKURV ======================
+function updateModernCart() {
+    const cartContainer = document.getElementById('cart-items');
+    const cartTotalEl = document.getElementById('cart-total-price');
+    const cartCountEl = document.getElementById('cart-room-count');
+    const bookBtn = document.getElementById('cart-book-btn');
+
+    let itemsHTML = '';
+    let total = 0;
+    let itemCount = 0;
+
+    if (selectedRoomPrice > 0) {
+        itemsHTML += `
+            <div class="cart-item">
+                <div>
+                    <div class="cart-item-name">${selectedRoomName}</div>
+                    <small style="color:#94a3b8;font-size:0.82rem;">Rom • per natt</small>
+                </div>
+                <div style="text-align:right">
+                    <div class="cart-item-price">${selectedRoomPrice.toLocaleString('no-NO')} kr</div>
+                    <button class="cart-item-remove" onclick="removeRoom()">✕</button>
+                </div>
+            </div>`;
+        total += selectedRoomPrice;
+        itemCount++;
+    }
+
+    document.querySelectorAll('#extras-section input:checked').forEach(cb => {
+        const price = parseInt(cb.dataset.price);
+        const name = cb.dataset.name;
+        total += price;
+        itemCount++;
+
+        itemsHTML += `
+            <div class="cart-item">
+                <div>
+                    <div class="cart-item-name">${name}</div>
+                </div>
+                <div style="text-align:right">
+                    <div class="cart-item-price">+${price.toLocaleString('no-NO')} kr</div>
+                    <button class="cart-item-remove" onclick="removeExtraByName('${name}')">✕</button>
+                </div>
+            </div>`;
+    });
+
+    cartContainer.innerHTML = itemsHTML || '<p style="color:#999;font-style:italic;text-align:center;padding:20px 0;font-size:0.95rem;">Ingen valg ennå</p>';
+    cartTotalEl.textContent = total.toLocaleString('no-NO') + ' kr';
+    cartCountEl.textContent = itemCount;
+    bookBtn.disabled = (selectedRoomPrice === 0);
+
+    // Oppdater mobil floating bar
+    updateMobileCartBar(total);
+}
+
+function updateMobileCartBar(total) {
+    const bar = document.getElementById('mobile-cart-bar');
+    const nameEl = document.getElementById('mobile-cart-name');
+    const priceEl = document.getElementById('mobile-cart-price');
+
+    if (selectedRoomPrice > 0) {
+        bar.style.display = 'flex';
+        nameEl.textContent = selectedRoomName;
+        priceEl.textContent = total.toLocaleString('no-NO') + ' kr';
+    } else {
+        bar.style.display = 'none';
+    }
+}
+
+function removeRoom() {
+    document.querySelectorAll('.room-card.selected').forEach(c => c.classList.remove('selected'));
+    selectedRoomPrice = 0;
+    selectedRoomName = '';
+    document.getElementById('extras-section').style.display = 'none';
+    // Fjern alle extras
+    document.querySelectorAll('#extras-section input:checked').forEach(cb => cb.checked = false);
+    updateTotal();
+}
+
+function removeExtra(btn) {
+    // Kompatibilitet med gammel kode
+    const extraCard = btn.closest('.extra-card');
+    if (extraCard) {
+        const checkbox = extraCard.querySelector('input');
+        if (checkbox) checkbox.checked = false;
+    }
+    updateTotal();
+}
+
+function removeExtraByName(name) {
+    document.querySelectorAll('#extras-section input').forEach(cb => {
+        if (cb.dataset.name === name) cb.checked = false;
+    });
+    updateTotal();
+}
+
+// ====================== VIRTUELT TOURS ======================
 function openTour(url) {
     const modal = document.getElementById('tourModal');
     const frame = document.getElementById('tourFrame');
@@ -150,92 +277,41 @@ function closeTour() {
     document.body.style.overflow = 'auto';
 }
 
-// ====================== NY MODERNE HANDLEKURV ======================
+// ====================== HAMBURGER-MENY (MOBIL) ======================
+document.addEventListener('DOMContentLoaded', () => {
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const closeBtn = document.getElementById('header-close-btn');
+    const header = document.getElementById('booking-bar');
 
-function updateModernCart() {
-    const cartContainer = document.getElementById('cart-items');
-    const cartTotalEl = document.getElementById('cart-total-price');
-    const cartCountEl = document.getElementById('cart-room-count');
-    const bookBtn = document.getElementById('cart-book-btn');
-
-    cartContainer.innerHTML = '';
-
-    let itemsHTML = '';
-    let total = 0;
-
-    // Valgt rom
-    if (selectedRoomPrice > 0) {
-        itemsHTML += `
-            <div class="cart-item">
-                <div>
-                    <div class="cart-item-name">${selectedRoomName}</div>
-                    <small>Rom • per natt</small>
-                </div>
-                <div style="text-align:right">
-                    <div class="cart-item-price">${selectedRoomPrice.toLocaleString('no-NO')} kr</div>
-                    <button class="cart-item-remove" onclick="removeRoom()">✕</button>
-                </div>
-            </div>`;
-        total += selectedRoomPrice;
+    if (menuBtn) {
+        menuBtn.addEventListener('click', () => {
+            header.classList.toggle('menu-open');
+        });
     }
 
-    // Valgte extras
-    document.querySelectorAll('#extras-section input:checked').forEach(cb => {
-        const price = parseInt(cb.dataset.price);
-        const name = cb.dataset.name;
-        total += price;
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            header.classList.remove('menu-open');
+        });
+    }
 
-        itemsHTML += `
-            <div class="cart-item">
-                <div class="cart-item-name">${name}</div>
-                <div style="text-align:right">
-                    <div class="cart-item-price">+${price.toLocaleString('no-NO')} kr</div>
-                    <button class="cart-item-remove" onclick="removeExtra(this)">✕</button>
-                </div>
-            </div>`;
-    });
+    // Skjul header ved scroll ned, vis ved scroll opp (kun mobil)
+    let lastScrollY = window.scrollY;
+    window.addEventListener('scroll', () => {
+        if (window.innerWidth > 767) return;
+        if (header.classList.contains('menu-open')) return;
 
-    cartContainer.innerHTML = itemsHTML || '<p style="color:#999; font-style:italic; text-align:center; padding:20px 0;">Ingen valg ennå</p>';
-
-    cartTotalEl.textContent = total.toLocaleString('no-NO') + ' kr';
-    cartCountEl.textContent = (selectedRoomPrice > 0 ? 1 : 0) + document.querySelectorAll('#extras-section input:checked').length;
-
-    bookBtn.disabled = (selectedRoomPrice === 0);
-    document.getElementById('modern-cart').style.display = 'block';
-}
-
-// Fjern rom
-function removeRoom() {
-    document.querySelectorAll('.room-card.selected').forEach(c => c.classList.remove('selected'));
-    selectedRoomPrice = 0;
-    selectedRoomName = '';
-    document.getElementById('extras-section').style.display = 'none';
-    updateTotal();        // oppdaterer den gamle summary også
-    updateModernCart();
-}
-
-// Fjern enkelt extra
-function removeExtra(btn) {
-    const checkbox = btn.closest('.extra-card') ? btn.closest('.extra-card').querySelector('input') : null;
-    if (checkbox) checkbox.checked = false;
-    updateTotal();
-    updateModernCart();
-}
-
-// Koble ny cart til eksisterende updateTotal
-const originalUpdateTotal = updateTotal;
-updateTotal = function() {
-    originalUpdateTotal();
-    updateModernCart();
-};
-
-// Initial kall
-document.addEventListener('DOMContentLoaded', () => {
-    updateModernCart();
+        const currentScrollY = window.scrollY;
+        if (currentScrollY > lastScrollY && currentScrollY > 80) {
+            header.classList.add('menu-hidden');
+        } else {
+            header.classList.remove('menu-hidden');
+        }
+        lastScrollY = currentScrollY;
+    }, { passive: true });
 });
-// ====================== SLUTT NY HANDLEKURV ======================
 
-// ====================== NY MODERNE BILDE LIGHTBOX ======================
+// ====================== LIGHTBOX ======================
 let currentRoomIndex = 0;
 let currentImageIndex = 0;
 
@@ -243,9 +319,10 @@ function openLightbox(imgElement) {
     const card = imgElement.closest('.room-card');
     currentRoomIndex = parseInt(card.dataset.roomIndex);
     const images = roomImages[currentRoomIndex];
-    
-    // Finn hvilket bilde som ble klikket
-    currentImageIndex = images.findIndex(src => imgElement.src.includes(src.split('/').pop()));
+
+    currentImageIndex = images.findIndex(src =>
+        imgElement.src.includes(decodeURIComponent(src).split('/').pop())
+    );
     if (currentImageIndex === -1) currentImageIndex = 0;
 
     document.getElementById('lightbox').style.display = 'flex';
@@ -257,8 +334,7 @@ function showLightboxImage() {
     const images = roomImages[currentRoomIndex];
     const imgEl = document.getElementById('lightbox-image');
     imgEl.src = images[currentImageIndex];
-    
-    document.getElementById('lightbox-counter').textContent = 
+    document.getElementById('lightbox-counter').textContent =
         `${currentImageIndex + 1} / ${images.length}`;
 }
 
@@ -279,20 +355,49 @@ function closeLightbox() {
     document.body.style.overflow = 'auto';
 }
 
-// Klikk på bilde for å åpne lightbox (legger til event listeners)
+// ====================== KOBLE ALT SAMMEN ======================
+
+// Overskriv updateTotal med kombinert versjon
+function updateTotal() {
+    _updateSummary();
+    updateModernCart();
+}
+
+// DOMContentLoaded-oppsett
 document.addEventListener('DOMContentLoaded', () => {
+    updateModernCart();
+
+    // Klikk på bilde for å åpne lightbox
     document.querySelectorAll('.room-image').forEach(img => {
         img.style.cursor = 'zoom-in';
         img.addEventListener('click', () => openLightbox(img));
     });
 
-    // Tastatur-støtte (piler + Esc)
+    // Tastatur-støtte for lightbox
     document.addEventListener('keydown', e => {
         if (document.getElementById('lightbox').style.display === 'flex') {
             if (e.key === 'Escape') closeLightbox();
             if (e.key === 'ArrowLeft') prevLightboxImage();
             if (e.key === 'ArrowRight') nextLightboxImage();
         }
+        if (document.getElementById('roomModal').style.display === 'flex') {
+            if (e.key === 'Escape') closeRoomModal();
+        }
     });
+
+    // Swipe-støtte for lightbox (touch)
+    let touchStartX = 0;
+    const lightbox = document.getElementById('lightbox');
+
+    lightbox.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    lightbox.addEventListener('touchend', e => {
+        const diff = touchStartX - e.changedTouches[0].screenX;
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) nextLightboxImage();
+            else prevLightboxImage();
+        }
+    }, { passive: true });
 });
-// ====================== SLUTT LIGHTBOX ======================
