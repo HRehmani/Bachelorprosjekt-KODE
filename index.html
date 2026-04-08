@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thon Hotel Slottsparken – Prototype</title>
+    <title>Thon Hotel Slottsparken</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -16,10 +16,14 @@
 
 <header class="booking-bar" id="booking-bar">
     <div class="container">
-        <h1>Thon Hotel Slottsparken</h1>
+        <h1><a href="index.html" style="color:inherit;text-decoration:none;">Thon Hotel Slottsparken</a></h1>
 
-        <!-- Hamburger-knapp kun synlig på mobil (inne i header for layout) -->
         <button class="header-close-btn" id="header-close-btn" aria-label="Lukk meny">✕</button>
+
+        <nav class="main-nav">
+            <a href="index.html">Hjem</a>
+            <a href="opplevelser.html">Opplevelser</a>
+        </nav>
 
         <div class="quick-book" id="quick-book">
             <div class="field"><label>Innsjekk</label><input type="date" id="checkin" required></div>
@@ -31,6 +35,7 @@
                 <option value="4">4 gjester</option>
             </select></div>
             <button onclick="document.getElementById('room-section').scrollIntoView({behavior:'smooth'})" class="search-btn">Sjekk tilgjengelighet</button>
+            <a href="opplevelser.html" class="virtual-btn" style="text-decoration:none;">Opplevelser</a>
             <div class="virtual-dropdown">
                 <button class="virtual-btn">Virtual Tours ▾</button>
                 <div class="virtual-menu">
@@ -55,7 +60,6 @@
 <section id="room-section" class="package-builder container">
     <h2 class="section-title">Bygg din opplevelse</h2>
 
-    <!-- ====================== MODERNE HANDLEKURV ====================== -->
     <aside id="modern-cart" class="modern-cart">
         <div class="cart-header">
             <h3>Din opplevelse</h3>
@@ -69,25 +73,22 @@
             </div>
             <small id="cart-nights-info">per natt • velg dato for eksakt pris</small>
         </div>
-        <button id="cart-book-btn" class="cart-book-btn" disabled onclick="document.querySelector('.summary').scrollIntoView({behavior:'smooth'})">Fullfør booking</button>
+        <button id="cart-book-btn" class="cart-book-btn" disabled onclick="goToPayment()">Fullfør booking</button>
     </aside>
 
-    <!-- ====================== MOBIL FLOATING CART ====================== -->
     <div id="mobile-cart-bar" class="mobile-cart-bar" style="display:none;">
         <div class="mobile-cart-info">
             <span id="mobile-cart-name">Ingen valg</span>
             <strong id="mobile-cart-price">0 kr</strong>
         </div>
-        <button onclick="document.querySelector('.summary').scrollIntoView({behavior:'smooth'})">Book nå</button>
+        <button onclick="goToPayment()">Book nå</button>
     </div>
-    <!-- ====================== SLUTT HANDLEKURV ====================== -->
 
     <div class="main-content">
         <div class="step">
             <h3>1. Velg romtype</h3>
             <div class="options rooms-grid">
 
-                <!-- Standard Double -->
                 <div class="card room-card" data-price="1145" data-room-index="0">
                     <div class="slider-container">
                         <button class="slider-btn prev" onclick="prevImage(this)">‹</button>
@@ -101,7 +102,6 @@
                     <button onclick="showRoomDetails(0)" class="details-btn">Se detaljer</button>
                 </div>
 
-                <!-- Standard Single -->
                 <div class="card room-card" data-price="995" data-room-index="1">
                     <div class="slider-container">
                         <button class="slider-btn prev" onclick="prevImage(this)">‹</button>
@@ -115,7 +115,6 @@
                     <button onclick="showRoomDetails(1)" class="details-btn">Se detaljer</button>
                 </div>
 
-                <!-- Superior -->
                 <div class="card room-card" data-price="1345" data-room-index="2">
                     <div class="slider-container">
                         <button class="slider-btn prev" onclick="prevImage(this)">‹</button>
@@ -129,7 +128,6 @@
                     <button onclick="showRoomDetails(2)" class="details-btn">Se detaljer</button>
                 </div>
 
-                <!-- Superior Twin -->
                 <div class="card room-card" data-price="1395" data-room-index="3">
                     <div class="slider-container">
                         <button class="slider-btn prev" onclick="prevImage(this)">‹</button>
@@ -143,7 +141,6 @@
                     <button onclick="showRoomDetails(3)" class="details-btn">Se detaljer</button>
                 </div>
 
-                <!-- Business -->
                 <div class="card room-card" data-price="1890" data-room-index="4">
                     <div class="slider-container">
                         <button class="slider-btn prev" onclick="prevImage(this)">‹</button>
@@ -157,7 +154,6 @@
                     <button onclick="showRoomDetails(4)" class="details-btn">Se detaljer</button>
                 </div>
 
-                <!-- Suite -->
                 <div class="card room-card" data-price="3490" data-room-index="5">
                     <div class="slider-container">
                         <button class="slider-btn prev" onclick="prevImage(this)">‹</button>
@@ -171,7 +167,6 @@
                     <button onclick="showRoomDetails(5)" class="details-btn">Se detaljer</button>
                 </div>
 
-                <!-- Junior Suite -->
                 <div class="card room-card" data-price="2890" data-room-index="6">
                     <div class="slider-container">
                         <button class="slider-btn prev" onclick="prevImage(this)">‹</button>
@@ -185,7 +180,6 @@
                     <button onclick="showRoomDetails(6)" class="details-btn">Se detaljer</button>
                 </div>
 
-                <!-- 2-roms Leilighet -->
                 <div class="card room-card" data-price="2545" data-room-index="7">
                     <div class="slider-container">
                         <button class="slider-btn prev" onclick="prevImage(this)">‹</button>
@@ -218,7 +212,7 @@
                 <small id="package-info">Velg rom for å starte pakken</small>
                 <div id="selected-items" style="margin-top:20px; font-size:1.1rem;"></div>
             </div>
-            <button id="book-btn" disabled onclick="document.getElementById('modern-cart').scrollIntoView({behavior:'smooth'})">Fullfør booking</button>
+            <button id="book-btn" disabled onclick="goToPayment()">Fullfør booking</button>
         </div>
     </div>
 </section>
