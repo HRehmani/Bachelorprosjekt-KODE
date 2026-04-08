@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opplevelser – Thon Hotel Slottsparken</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ====================== MOBIL MENY-KNAPP ====================== -->
+<button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Åpne meny">
+    <span></span><span></span><span></span>
+</button>
+
+<header class="booking-bar" id="booking-bar">
+    <div class="container">
+        <h1><a href="index.html" style="color:inherit;text-decoration:none;">Thon Hotel Slottsparken</a></h1>
+        <button class="header-close-btn" id="header-close-btn" aria-label="Lukk meny">✕</button>
+
+        <nav class="main-nav">
+            <a href="index.html">Hjem</a>
+            <a href="opplevelser.html">Opplevelser</a>
+        </nav>
+
+        <div class="quick-book" id="quick-book">
+            <div class="field"><label>Innsjekk</label><input type="date" id="checkin"></div>
+            <div class="field"><label>Utsjekk</label><input type="date" id="checkout"></div>
+            <div class="field"><label>Gjester</label><select id="guests">
+                <option value="1">1 gjest</option>
+                <option value="2" selected>2 gjester</option>
+                <option value="3">3 gjester</option>
+                <option value="4">4 gjester</option>
+            </select></div>
+            <a href="index.html#room-section" class="search-btn">Book rom</a>
+            <a href="opplevelser.html" class="virtual-btn" style="text-decoration:none;">Opplevelser</a>
+            <div class="virtual-dropdown">
+                <button class="virtual-btn">Virtual Tours ▾</button>
+                <div class="virtual-menu">
+                    <a href="#" onclick="openTour('https://kuula.co/share/collection/7DRM5?logo=0&info=0&fs=1&vr=1&sd=1')">Grotten – Vinsmaking</a>
+                    <a href="#" onclick="openTour('https://kuula.co/share/collection/7DRM0?logo=0&info=0&fs=1&vr=1&sd=1')">Stella – Konferanserom</a>
+                    <a href="#" onclick="openTour('https://kuula.co/share/collection/7Dsy9?logo=0&info=0&fs=1&vr=1&sd=1')">Kringla – Konferanserom</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Hero -->
+<section class="opp-hero">
+    <div class="opp-hero-content">
+        <span class="eyebrow">Thon Hotel Slottsparken</span>
+        <h1>Opplevelser & pakker</h1>
+        <p>Gjør oppholdet uforglemmelig – velg blant våre eksklusive opplevelser og la oss ta hånd om alt</p>
+    </div>
+</section>
+
+<!-- Intro -->
+<section class="opp-section">
+    <div class="container">
+        <div class="opp-intro">
+            <h2>Mer enn bare et hotellrom</h2>
+            <p>Hos Thon Hotel Slottsparken ønsker vi at gjestene skal oppleve mer enn fire vegger. Enten du vil slappe av i spaen, smake viner i den historiske Grotten, utforske Oslo til fots – eller nyte et minneverdige middagsbord – har vi pakket det inn for deg. Alle opplevelser kan legges til direkte i bookingen din.</p>
+        </div>
+
+        <div class="opp-grid">
+
+            <!-- SPA -->
+            <div class="opp-card">
+                <div class="opp-card-img-placeholder spa">🧖</div>
+                <div class="opp-card-body">
+                    <span class="opp-card-tag">Velvære</span>
+                    <h3>Spa-inngang</h3>
+                    <p>Start eller avslutt dagen i vårt rolige spa-anlegg. Her kan du nyte badstue, dampbad og avkjølingsbaseng i et stilrent og avslappende miljø. Perfekt for å koble av etter en lang reise eller en travel dag i Oslo. Spaen er tilgjengelig for alle gjester som legger den til i bookingen, og kapasiteten er begrenset for å sikre et rolig og eksklusivt opphold.</p>
+                    <div class="opp-card-meta">
+                        <div class="opp-meta-item"><span class="icon">⏱</span> Fri tilgang hele dagen</div>
+                        <div class="opp-meta-item"><span class="icon">👤</span> Per person</div>
+                        <div class="opp-meta-item"><span class="icon">📍</span> Hotellet, 2. etasje</div>
+                    </div>
+                    <div class="opp-card-footer">
+                        <div class="opp-price">
+                            <span>Pris per person</span>
+                            <strong>790 kr</strong>
+                        </div>
+                        <a href="index.html#extras-section" class="opp-book-btn">Legg til booking</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VINSMAKING -->
+            <div class="opp-card">
+                <div class="opp-card-img-placeholder vin">🍷</div>
+                <div class="opp-card-body">
+                    <span class="opp-card-tag">Smak & opplevelse</span>
+                    <h3>Vinsmaking i Grotten</h3>
+                    <p>Steg ned i hotellets historiske Grotten og opplev en guidet vinsmaking ledet av vår erfarne sommelier. Du vil bli introdusert for et utvalg nøye utvalgte viner fra Europa, med presentasjon av druetype, terroir og produksjonsmetode. Opplevelsen er like godt egnet for nybegynnere som for de mer erfarne vinentusiastene. Du kan i tillegg se 360°-tour av Grotten under Virtual Tours.</p>
+                    <div class="opp-card-meta">
+                        <div class="opp-meta-item"><span class="icon">⏱</span> Ca. 90 minutter</div>
+                        <div class="opp-meta-item"><span class="icon">👥</span> Maks 12 personer</div>
+                        <div class="opp-meta-item"><span class="icon">📍</span> Grotten, kjeller</div>
+                    </div>
+                    <div class="opp-card-footer">
+                        <div class="opp-price">
+                            <span>Pris per person</span>
+                            <strong>590 kr</strong>
+                        </div>
+                        <a href="index.html#extras-section" class="opp-book-btn">Legg til booking</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OSLO TOUR -->
+            <div class="opp-card">
+                <div class="opp-card-img-placeholder oslo">🗺️</div>
+                <div class="opp-card-body">
+                    <span class="opp-card-tag">Utforskning</span>
+                    <h3>Oslo Tour</h3>
+                    <p>La vår lokale guide ta deg med på en fottur gjennom Oslos mest historiske og spennende kvartaler. Turen starter rett utenfor hotellet og tar deg forbi Slottet, Karl Johans gate, Aker Brygge og Akershus festning. Du får spennende historier, lokale tips og innsikt i norsk kultur og historie som du ikke finner i noen reiseguide. Turen passer for alle aldre og holder et rolig tempo.</p>
+                    <div class="opp-card-meta">
+                        <div class="opp-meta-item"><span class="icon">⏱</span> Ca. 2,5 timer</div>
+                        <div class="opp-meta-item"><span class="icon">👟</span> Fottur</div>
+                        <div class="opp-meta-item"><span class="icon">📍</span> Møtes i lobbyen</div>
+                    </div>
+                    <div class="opp-card-footer">
+                        <div class="opp-price">
+                            <span>Pris per person</span>
+                            <strong>490 kr</strong>
+                        </div>
+                        <a href="index.html#extras-section" class="opp-book-btn">Legg til booking</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MIDDAGSPAKKE -->
+            <div class="opp-card">
+                <div class="opp-card-img-placeholder mat">🍽️</div>
+                <div class="opp-card-body">
+                    <span class="opp-card-tag">Mat & drikke</span>
+                    <h3>Middagspakke</h3>
+                    <p>Nyt et treretter's middagsmåltid i hotellets restaurant med fokus på sesongens råvarer og norsk matkultur. Menyen er satt sammen av vår kjøkkensjef og inkluderer forrett, hovedrett og dessert – servert i elegante omgivelser med utsikt mot Slottsparken. Pakken inkluderer et glass norsk vin eller mineralvann til hvert gang. Perfekt for par, familier eller forretningsmøter i en avslappet atmosfære.</p>
+                    <div class="opp-card-meta">
+                        <div class="opp-meta-item"><span class="icon">⏱</span> Ca. 2 timer</div>
+                        <div class="opp-meta-item"><span class="icon">🍷</span> Inkl. drikke</div>
+                        <div class="opp-meta-item"><span class="icon">📍</span> Hotellets restaurant</div>
+                    </div>
+                    <div class="opp-card-footer">
+                        <div class="opp-price">
+                            <span>Pris per person</span>
+                            <strong>890 kr</strong>
+                        </div>
+                        <a href="index.html#extras-section" class="opp-book-btn">Legg til booking</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="opp-cta">
+    <div class="container">
+        <h2>Klar til å booke oppholdet ditt?</h2>
+        <p>Kombiner rom og opplevelser på én side – rask, enkel og oversiktlig.</p>
+        <a href="index.html#room-section" class="opp-cta-btn">Velg rom og pakker</a>
+    </div>
+</section>
+
+<!-- Virtual tour modal -->
+<div id="tourModal" class="tour-modal">
+    <span class="close-tour" onclick="closeTour()">✕</span>
+    <iframe id="tourFrame" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<script src="Javascript.js"></script>
+</body>
+</html>
