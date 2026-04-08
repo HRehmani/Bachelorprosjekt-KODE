@@ -13,62 +13,14 @@ const roomInfo = [
 ];
 
 const roomImages = [
-    // 0 Standard Double
-    [
-        "bilder/Thon_Hotel_Slottsparken_Standard_Rom%201.webp",
-        "bilder/Thon_Hotel_Slottsparken_Standard_Rom%202.webp",
-        "bilder/Thon_Hotel_Slottsparken_Standard_Rom%203.webp",
-        "bilder/Thon_Hotel_Slottsparken_Standard_Rom%204.webp",
-        "bilder/Thon_Hotel_Slottsparken_bad_Standard_Room%205.webp"
-    ],
-    // 1 Standard Single
-    [
-        "bilder/Thon_Hotel_Slottsparken_Standard_Room_Single%201.webp",
-        "bilder/Thon_Hotel_Slottsparken_Standard_Room_Single%202.webp",
-        "bilder/Thon_Hotel_Slottsparken_Standard_Room_Single_Bad%203.webp",
-        "bilder/Thon_Hotel_Slottsparken_Standard_Room_Single_Bad%204.webp"
-    ],
-    // 2 Superior
-    [
-        "bilder/Thon_Hotel_Slottsparken_Superior_Room%201.webp",
-        "bilder/Thon_Hotel_Slottsparken_Superior_Room%202.webp",
-        "bilder/Thon_Hotel_Slottsparken_Superior_Room%203.webp",
-        "bilder/thon-hotel-slottsparken-superior-room-9%202.webp"
-    ],
-    // 3 Superior Twin
-    [
-        "bilder/Thon_Hotel_Slottsparken_Superior_Rom_twin%201.webp"
-    ],
-    // 4 Business
-    [
-        "bilder/Thon_Hotel_Slottsparken_Business_Room%201.webp",
-        "bilder/Thon_Hotel_Slottsparken_Business_Room%202.webp",
-        "bilder/Thon_Hotel_Slottsparken_Business_Room%204.webp",
-        "bilder/Thon_Hotel_Slottsparken_Business_Room%205.webp"
-    ],
-    // 5 Suite
-    [
-        "bilder/Thon_Hotel_Slottsparken_Suite%201.webp",
-        "bilder/Thon_Hotel_Slottsparken_Suite%202.webp",
-        "bilder/Thon_Hotel_Slottsparken_Suite%203.webp",
-        "bilder/Thon_Hotel_Slottsparken_Suite%204.webp",
-        "bilder/Thon_Hotel_Slottsparken_Suite%205.webp",
-        "bilder/Thon_Hotel_Slottsparken_Bad_Suite%206.webp",
-        "bilder/Thon_Hotel_Slottsparken_Bad_Suite%207.webp"
-    ],
-    // 6 Junior Suite
-    [
-        "bilder/thon-hotel-slottsparken-juniorsuite-1%201.webp",
-        "bilder/thon-hotel-slottsparken-juniorsuite-2%202.webp",
-        "bilder/thon-hotel-slottsparken-juniorsuite-3%203.webp",
-        "bilder/thon-hotel-slottsparken-juniorsuite-4%204.webp",
-        "bilder/thon-hotel-slottsparken-juniorsuite-5%205.webp",
-        "bilder/thon-hotel-slottsparken-juniorsuite-6%206.webp"
-    ],
-    // 7 2-roms Leilighet
-    [
-        "bilder/thon-hotel-slottsparken-leilighet-64%201.webp"
-    ]
+    ["bilder/Thon_Hotel_Slottsparken_Standard_Rom%201.webp","bilder/Thon_Hotel_Slottsparken_Standard_Rom%202.webp","bilder/Thon_Hotel_Slottsparken_Standard_Rom%203.webp","bilder/Thon_Hotel_Slottsparken_Standard_Rom%204.webp","bilder/Thon_Hotel_Slottsparken_bad_Standard_Room%205.webp"],
+    ["bilder/Thon_Hotel_Slottsparken_Standard_Room_Single%201.webp","bilder/Thon_Hotel_Slottsparken_Standard_Room_Single%202.webp","bilder/Thon_Hotel_Slottsparken_Standard_Room_Single_Bad%203.webp","bilder/Thon_Hotel_Slottsparken_Standard_Room_Single_Bad%204.webp"],
+    ["bilder/Thon_Hotel_Slottsparken_Superior_Room%201.webp","bilder/Thon_Hotel_Slottsparken_Superior_Room%202.webp","bilder/Thon_Hotel_Slottsparken_Superior_Room%203.webp","bilder/thon-hotel-slottsparken-superior-room-9%202.webp"],
+    ["bilder/Thon_Hotel_Slottsparken_Superior_Rom_twin%201.webp"],
+    ["bilder/Thon_Hotel_Slottsparken_Business_Room%201.webp","bilder/Thon_Hotel_Slottsparken_Business_Room%202.webp","bilder/Thon_Hotel_Slottsparken_Business_Room%204.webp","bilder/Thon_Hotel_Slottsparken_Business_Room%205.webp"],
+    ["bilder/Thon_Hotel_Slottsparken_Suite%201.webp","bilder/Thon_Hotel_Slottsparken_Suite%202.webp","bilder/Thon_Hotel_Slottsparken_Suite%203.webp","bilder/Thon_Hotel_Slottsparken_Suite%204.webp","bilder/Thon_Hotel_Slottsparken_Suite%205.webp","bilder/Thon_Hotel_Slottsparken_Bad_Suite%206.webp","bilder/Thon_Hotel_Slottsparken_Bad_Suite%207.webp"],
+    ["bilder/thon-hotel-slottsparken-juniorsuite-1%201.webp","bilder/thon-hotel-slottsparken-juniorsuite-2%202.webp","bilder/thon-hotel-slottsparken-juniorsuite-3%203.webp","bilder/thon-hotel-slottsparken-juniorsuite-4%204.webp","bilder/thon-hotel-slottsparken-juniorsuite-5%205.webp","bilder/thon-hotel-slottsparken-juniorsuite-6%206.webp"],
+    ["bilder/thon-hotel-slottsparken-leilighet-64%201.webp"]
 ];
 
 // ====================== ROM-VALG ======================
@@ -79,7 +31,6 @@ function selectRoom(btn) {
     selectedRoomName = btn.parentElement.querySelector('h4').textContent;
     document.getElementById('extras-section').style.display = 'block';
 
-    // Scroll til extras på mobil
     if (window.innerWidth < 768) {
         setTimeout(() => {
             document.getElementById('extras-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -129,13 +80,6 @@ function closeRoomModal() {
     document.getElementById('roomModal').style.display = 'none';
     document.body.style.overflow = 'auto';
 }
-
-// Klikk utenfor modal for å lukke
-document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('roomModal').addEventListener('click', function(e) {
-        if (e.target === this) closeRoomModal();
-    });
-});
 
 // ====================== TOTALPRIS-OPPDATERING ======================
 function _updateSummary() {
@@ -215,7 +159,6 @@ function updateModernCart() {
     cartCountEl.textContent = itemCount;
     bookBtn.disabled = (selectedRoomPrice === 0);
 
-    // Oppdater mobil floating bar
     updateMobileCartBar(total);
 }
 
@@ -238,18 +181,7 @@ function removeRoom() {
     selectedRoomPrice = 0;
     selectedRoomName = '';
     document.getElementById('extras-section').style.display = 'none';
-    // Fjern alle extras
     document.querySelectorAll('#extras-section input:checked').forEach(cb => cb.checked = false);
-    updateTotal();
-}
-
-function removeExtra(btn) {
-    // Kompatibilitet med gammel kode
-    const extraCard = btn.closest('.extra-card');
-    if (extraCard) {
-        const checkbox = extraCard.querySelector('input');
-        if (checkbox) checkbox.checked = false;
-    }
     updateTotal();
 }
 
@@ -295,7 +227,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Skjul header ved scroll ned, vis ved scroll opp (kun mobil)
     let lastScrollY = window.scrollY;
     window.addEventListener('scroll', () => {
         if (window.innerWidth > 767) return;
@@ -334,8 +265,7 @@ function showLightboxImage() {
     const images = roomImages[currentRoomIndex];
     const imgEl = document.getElementById('lightbox-image');
     imgEl.src = images[currentImageIndex];
-    document.getElementById('lightbox-counter').textContent =
-        `${currentImageIndex + 1} / ${images.length}`;
+    document.getElementById('lightbox-counter').textContent = `${currentImageIndex + 1} / ${images.length}`;
 }
 
 function prevLightboxImage() {
@@ -356,24 +286,45 @@ function closeLightbox() {
 }
 
 // ====================== KOBLE ALT SAMMEN ======================
-
-// Overskriv updateTotal med kombinert versjon
 function updateTotal() {
     _updateSummary();
     updateModernCart();
+}
+
+// ====================== GÅ TIL BETALINGSSIDEN ======================
+function goToPayment() {
+    if (selectedRoomPrice === 0) {
+        alert('Velg et rom før du fortsetter.');
+        return;
+    }
+
+    const extras = [];
+    document.querySelectorAll('#extras-section input:checked').forEach(cb => {
+        extras.push({ name: cb.dataset.name, price: parseInt(cb.dataset.price) });
+    });
+
+    const booking = {
+        roomName: selectedRoomName,
+        roomPrice: selectedRoomPrice,
+        extras: extras,
+        checkin: document.getElementById('checkin').value || '',
+        checkout: document.getElementById('checkout').value || '',
+        guests: document.getElementById('guests').value || '2'
+    };
+
+    sessionStorage.setItem('thon_booking', JSON.stringify(booking));
+    window.location.href = 'betaling.html';
 }
 
 // DOMContentLoaded-oppsett
 document.addEventListener('DOMContentLoaded', () => {
     updateModernCart();
 
-    // Klikk på bilde for å åpne lightbox
     document.querySelectorAll('.room-image').forEach(img => {
         img.style.cursor = 'zoom-in';
         img.addEventListener('click', () => openLightbox(img));
     });
 
-    // Tastatur-støtte for lightbox
     document.addEventListener('keydown', e => {
         if (document.getElementById('lightbox').style.display === 'flex') {
             if (e.key === 'Escape') closeLightbox();
@@ -385,7 +336,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Swipe-støtte for lightbox (touch)
     let touchStartX = 0;
     const lightbox = document.getElementById('lightbox');
 
